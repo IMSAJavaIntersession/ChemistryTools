@@ -9,12 +9,12 @@ package edu.IMSA.Intersession.chemistrytools;
  *
  * @author student
  */
-public class PeriodicTable {
+public class PeriodicTable { 
     
     String[] elm = new String[3];
     String[] sym = new String[3];
     
-    public PeriodicTable(){
+    public PeriodicTable(String symbol){
         
         elm[0] = "Hydrogen";
         elm[1] = "Helium";
@@ -23,6 +23,15 @@ public class PeriodicTable {
         sym[0] = "H";
         sym[1] = "He";
         sym[2] = "Li";
+        
+        for(int i = 0; i<4; i++){
+            if (sym[i] == symbol){
+                System.out.println(elm[i]);
+            }
+            else{}
+        
+            
+        }
         
     }
 }
