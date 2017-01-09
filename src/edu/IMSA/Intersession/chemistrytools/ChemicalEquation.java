@@ -5,26 +5,36 @@ import java.util.*;
 public class ChemicalEquation {
     String equation;
     
-    String equationSide1;
-    String equationSide2;
+    String reactants;
+    String products;
+    String molecule1;
+    String molecule2;
     
     ArrayList moleculeList = new ArrayList();
     
-    public ChemicalEquation(String inEquation)
+    public ChemicalEquation(String r, String p)
     {
-        equation = inEquation;
+        reactants = r;
+        products = p;
     }
-    
+   /*
     public void seperateSides()
     {
         String[] parts = equation.split("-");
         equationSide1 = parts[0];
         equationSide2 = parts[1];
     }
+   */
     
     public void seperateMolecules()
     {
-        
+        String[] parts = reactants.split("+");
+        moleculeList.add(parts[0]);
+        moleculeList.add(parts[0]);
+        if(products.contains("+"));
+            String[] parts2 = products.split("+");
+            moleculeList.add(parts2[0]);
+            moleculeList.add(parts2[1]);
     }
     
     public ArrayList getMolecules()
