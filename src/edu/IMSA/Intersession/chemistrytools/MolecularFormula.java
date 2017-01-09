@@ -5,38 +5,45 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
-
-
+import java.util.*;
 public class MolecularFormula {
-    String[] elements;
-    int e = 0;
+    ArrayList<String> elements=new ArrayList<String>();
     
  public MolecularFormula(String formula)
  {
-     for (int i=0; i<formula.length(); i++)
+     int i=0;
+     while (i<formula.length())
      {
         Character a = new Character(formula.charAt(i));
-        
-        
-        if (!Character.isDigit(a))
+        Character b = new Character(formula.charAt(i+1));
+        if (!Character.isDigit(a) && !Character.isDigit(b))
         {
-            elements[e]=Character.toString(a);
-            e++;
+            String toAdd = Character.toString(a) + Character.toString(b);
+            elements.add(toAdd);
+            i+=2;
         }
-        
-     }
+        else if(!Character.isDigit(a))
+        {
+          elements.add(Character.toString(a));
+          i++;
+        }
+        }
+        i++;
+     
           for (String element: elements)
           {
               System.out.println(element);
           }
+ 
               
  }
 
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("");
+         MolecularFormula one = new MolecularFormula("H2O5");
      }
  }
+
 
     
 
