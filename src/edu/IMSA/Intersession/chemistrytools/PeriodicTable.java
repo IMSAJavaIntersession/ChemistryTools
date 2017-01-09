@@ -10,5 +10,10 @@ package edu.IMSA.Intersession.chemistrytools;
  * @author student
  */
 public class PeriodicTable {
-    
+    public PeriodicTable(){
+        String[] elm = new String[3];
+        elm[0] = "Hydrogen";
+        elm[1] = "Helium";
+        elm[2] = "Lithium";
+    }
 }
