@@ -5,10 +5,38 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
-/**
- *
- * @author student
- */
+
+
 public class MolecularFormula {
+    String[] elements;
+    int e = 0;
     
-}
+ public MolecularFormula(String formula)
+ {
+     for (int i=0; i<formula.length(); i++)
+     {
+        Character a = new Character(formula.charAt(i));
+        
+        
+        if (!Character.isDigit(a))
+        {
+            elements[e]=Character.toString(a);
+            e++;
+        }
+        
+     }
+          for (String element: elements)
+          {
+              System.out.println(element);
+          }
+              
+ }
+
+     public static void main (String[] args)
+     {
+         MolecularFormula one = new MolecularFormula("");
+     }
+ }
+
+    
+
