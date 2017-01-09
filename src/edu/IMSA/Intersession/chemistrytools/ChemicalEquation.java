@@ -31,10 +31,14 @@ public class ChemicalEquation {
         String[] parts = reactants.split("+");
         moleculeList.add(parts[0]);
         moleculeList.add(parts[0]);
-        if(products.contains("+"));
+        if(products.contains("+")){
             String[] parts2 = products.split("+");
             moleculeList.add(parts2[0]);
             moleculeList.add(parts2[1]);
+        }
+        else {
+            moleculeList.add(reactants);
+        }
     }
     
     public ArrayList getMolecules()
