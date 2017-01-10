@@ -11,27 +11,28 @@ public class MolecularFormula {
 
  public MolecularFormula(String formula)
  {
+     PeriodicTable pT = new PeriodicTable("H");
      for (int i =0; i<formula.length(); i++)
      {       
         
         if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
-            elements.add(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1)));
+            elements.add(pT.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
         }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
-          elements.add(Character.toString(formula.charAt(i)));
+          elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i==0 & Character.isLetter(formula.charAt(i)))
         {
-            elements.add(Character.toString(formula.charAt(i)));
+            elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
         {
             int addElement = Character.getNumericValue(formula.charAt(i));
             while (addElement>0)
             {
-                elements.add(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1)));
+                elements.add(pT.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
         }
@@ -40,7 +41,7 @@ public class MolecularFormula {
             int addElement = Character.getNumericValue(formula.charAt(i));
             while (addElement>0)
             {
-                elements.add(Character.toString(formula.charAt(i-1)));
+                elements.add(pT.getElement(Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
         }
@@ -59,11 +60,11 @@ public class MolecularFormula {
  public void MolecularWeight(){
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
-<<<<<<< HEAD
+
          System.out.println("Element is: " + elements.get(i));
-=======
+
          elements.get(i);
->>>>>>> origin/master
+
      }
  }
  
