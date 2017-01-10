@@ -20,6 +20,8 @@ public class EquationInput implements ActionListener {
     JTextArea products;
     JLabel r;
     JLabel p;
+    String reactantsString;
+    String productsString;
     public static void main(String[] args){
         EquationInput window = new EquationInput();
         window.setup();
@@ -50,14 +52,20 @@ public class EquationInput implements ActionListener {
         panel.setBackground(Color.RED);
     }
     public void input(){
-        String reactantsstring = JOptionPane.showInputDialog("Enter the reactants!");
-        String productsstring = JOptionPane.showInputDialog("Enter the products!");
-        reactants.append(reactantsstring);
-        products.append(productsstring);
+        reactantsString = JOptionPane.showInputDialog("Enter the reactants!");
+        productsString = JOptionPane.showInputDialog("Enter the products!");
+        reactants.append(reactantsString);
+        products.append(productsString);
     }
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==butt){
             System.exit(0);
         }
+    }
+    public String returnreact(){
+        return reactantsString;
+    }
+    public String returnprod(){
+        return productsString;
     }
 }
