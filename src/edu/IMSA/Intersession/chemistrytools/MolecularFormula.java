@@ -7,7 +7,7 @@ package edu.IMSA.Intersession.chemistrytools;
 
 import java.util.*;
 public class MolecularFormula {
-    ArrayList<String> elements=new ArrayList<String>();
+    ArrayList<Element> elements=new ArrayList<Element>();
 
  public MolecularFormula(String formula)
  {
@@ -28,28 +28,30 @@ public class MolecularFormula {
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
         {
-            elements.add(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1)));
+            int addElement = Character.getNumericValue(formula.charAt(i));
+            while (addElement>0)
+            {
+                elements.add(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1)));
+                addElement--;
+            }
         }
-       
         else if (Character.isDigit(formula.charAt(i)))
         {
-            elements.add(Character.toString(formula.charAt(i-1)));
+            int addElement = Character.getNumericValue(formula.charAt(i));
+            while (addElement>0)
+            {
+                elements.add(Character.toString(formula.charAt(i-1)));
+                addElement--;
+            }
         }
-        }
+    }
      
-<<<<<<< HEAD
-        for (String element: elements)
-        {
-            System.out.println(element);
-        }     
-=======
-          for (String element: elements)
-          {
-              System.out.println(element);
-          }   
-          
-         
->>>>>>> origin/master
+    for (Element element: elements)
+    {
+        System.out.println(element);
+    }     
+     
+        
  }
  
 
