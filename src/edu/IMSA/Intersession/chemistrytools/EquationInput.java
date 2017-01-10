@@ -49,12 +49,12 @@ public class EquationInput implements ActionListener {
         panel.add(reactants);
         panel.add(p);
         panel.add(products);
+        submit.addActionListener(this);
+        panel.add(submit);
         panel.add(cr);
         panel.add(creactants);
         panel.add(cp);
         panel.add(cproducts);
-        submit.addActionListener(this);
-        panel.add(submit);
         Dimension d = new Dimension(500, 600);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
@@ -73,5 +73,9 @@ public class EquationInput implements ActionListener {
     }
     public String returnprod(){
         return productsString;
+    }
+    public void answer(String cre, String cpr){
+        creactants.append(cre);
+        cproducts.append(cpr);
     }
 }
