@@ -1,6 +1,7 @@
 package edu.IMSA.Intersession.chemistrytools;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class ChemicalEquation {
     String equation;
@@ -9,7 +10,7 @@ public class ChemicalEquation {
     String molecule1;
     String molecule2;
     
-    ArrayList moleculeList = new ArrayList();
+    ArrayList<String> moleculeList = new ArrayList<String>();
     
     public ChemicalEquation(String r, String p)
     {
@@ -27,25 +28,31 @@ public class ChemicalEquation {
     
     public void seperateMolecules()
     {
-        String tempReactants = reactants;
-        while(tempReactants.contains("+")) {
-            String[] parts = tempReactants.split("+");
-            moleculeList.add(parts[0]);
-            tempReactants = parts[1];
-        }
-        moleculeList.add(tempReactants);
-        String tempProducts = products;
+        String[] parts = reactants.split("\\+");
         
-        while(tempProducts.contains("+")){
-            String[] parts2 = tempProducts.split("+");
-            moleculeList.add(parts2[0]);
-            tempProducts = parts2[1];
-        }
-        moleculeList.add(tempProducts);
+        for(int i = 0; i< parts.length; i++)
+            moleculeList.add(parts[i].trim());
+        
+        String[] parts2 = products.split("\\+");
+        
+        for(int i = 0; i< parts2.length; i++)
+            moleculeList.add(parts2[i].trim());
     }
     
     public ArrayList getMolecules()
     {
         return moleculeList;
+    }
+    
+    public static void main(String[] args){
+        ChemicalEquation chem = new ChemicalEquation("H2 + O2 + C2 + Li8", "H2O + H5O7");
+        chem.seperateMolecules();
+        
+        ArrayList<String> output = chem.getMolecules();
+        
+        for(String k: output)
+        {
+            System.out.println(k);
+        }
     }
 }
