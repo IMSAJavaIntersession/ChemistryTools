@@ -18,6 +18,11 @@ public class ChemistryTools {
         // TODO code application logic here hello
         EquationInput frame = new EquationInput();
         frame.setup();
+        String r = frame.returnreact();
+        String p = frame.returnprod();
+        ChemicalEquation c = new ChemicalEquation(r,p);
+        String ans = c.toString();
+        frame.answer(ans);
     }
     
 }
