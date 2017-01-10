@@ -11,20 +11,23 @@ public class MolecularFormula {
 
  public MolecularFormula(String formula)
  {
-     PeriodicTable pT = new PeriodicTable("H");
+     PeriodicTable pT = new PeriodicTable();
      for (int i =0; i<formula.length(); i++)
      {       
         
         if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
+            System.out.println(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1)));
             elements.add(pT.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
         }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
+          System.out.println(pT.getElement(Character.toString(formula.charAt(i))));
           elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i==0 & Character.isLetter(formula.charAt(i)))
         {
+            System.out.println(pT.getElement(Character.toString(formula.charAt(i))));
             elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
@@ -70,7 +73,7 @@ public class MolecularFormula {
  
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("HE2F2OF");
+         MolecularFormula one = new MolecularFormula("H2O");
      }
      
      
