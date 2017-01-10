@@ -26,14 +26,14 @@ public class PeriodicTable {
         sym[1] = "He";
         sym[2] = "Li";
     }
-    public void getElement(String symbol){
-        
+    public Element getElement(String symbol){
+        Element e;
+        String name = "";
         for(int i = 0; i<4; i++){
             if (sym[i] == symbol){
-                System.out.println(elm[i]);
+                name = (elm[i]);
             }
-            else{}
         }
+        return new Element(name, 999, symbol, 999.999);
     }
-        
 }
