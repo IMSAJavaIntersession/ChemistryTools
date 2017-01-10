@@ -33,7 +33,7 @@ public class EquationInput implements ActionListener {
         submit = new JButton("Submit!");
         reactants = new JTextField(40);
         products = new JTextField(40);
-        textans = new JTextArea(10,40);
+        textans = new JTextArea(13,40);
         ans = new JScrollPane(textans);
         frame = new JFrame("Window");
         panel = new JPanel();
@@ -54,7 +54,7 @@ public class EquationInput implements ActionListener {
         panel.add(submit);
         panel.add(a);
         panel.add(textans);
-        Dimension d = new Dimension(500, 600);
+        Dimension d = new Dimension(500, 500);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
         frame.setVisible(true);
