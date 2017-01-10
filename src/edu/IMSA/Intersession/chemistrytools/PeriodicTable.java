@@ -29,8 +29,6 @@ public class PeriodicTable {
                 System.out.println(elm[i]);
             }
             else{}
-        
-            
         }
         
     }
