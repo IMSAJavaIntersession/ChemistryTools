@@ -53,7 +53,7 @@ public class MolecularFormula {
  public void MolecularWeight(){
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
-         elements.get(i)
+         elements.get(i);
      }
  }
  
