@@ -9,7 +9,8 @@ public class ChemicalEquation {
     String molecule1;
     String molecule2;
     
-    ArrayList<String> moleculeList = new ArrayList<String>();
+    ArrayList<String> moleculeStringList = new ArrayList<String>();
+    ArrayList<MolecularFormula> moleculeList = new ArrayList<MolecularFormula>();
     
     public ChemicalEquation(String r, String p)
     {
@@ -25,17 +26,24 @@ public class ChemicalEquation {
     }
    */
     
-    public void seperateMolecules()
+    public void seperateMoleculeStrings()
     {
         String[] parts = reactants.split("\\+");
         
         for(int i = 0; i< parts.length; i++)
-            moleculeList.add(parts[i].trim());
+            moleculeStringList.add(parts[i].trim());
         
         String[] parts2 = products.split("\\+");
         
         for(int i = 0; i< parts2.length; i++)
-            moleculeList.add(parts2[i].trim());
+            moleculeStringList.add(parts2[i].trim());
+    }
+    
+    public void stringToMolecules()
+    {
+        for(String mol: moleculeStringList){
+            moleculeList.add(new MolecularFormula(mol));
+        }
     }
     
     public ArrayList getMolecules()
