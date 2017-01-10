@@ -4,7 +4,6 @@ import java.util.*;
 
 public class ChemicalEquation {
     String equation;
-    
     String reactants;
     String products;
     String molecule1;
@@ -28,17 +27,21 @@ public class ChemicalEquation {
     
     public void seperateMolecules()
     {
-        String[] parts = reactants.split("+");
-        moleculeList.add(parts[0]);
-        moleculeList.add(parts[0]);
-        if(products.contains("+")){
-            String[] parts2 = products.split("+");
+        String tempReactants = reactants;
+        while(tempReactants.contains("+")) {
+            String[] parts = tempReactants.split("+");
+            moleculeList.add(parts[0]);
+            tempReactants = parts[1];
+        }
+        moleculeList.add(tempReactants);
+        String tempProducts = products;
+        
+        while(tempProducts.contains("+")){
+            String[] parts2 = tempProducts.split("+");
             moleculeList.add(parts2[0]);
-            moleculeList.add(parts2[1]);
+            tempProducts = parts2[1];
         }
-        else {
-            moleculeList.add(reactants);
-        }
+        moleculeList.add(tempProducts);
     }
     
     public ArrayList getMolecules()
