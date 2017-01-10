@@ -18,12 +18,11 @@ public class EquationInput implements ActionListener {
     JLabel label1;
     JTextField reactants;
     JTextField products;
-    JTextArea creactants;
-    JTextArea cproducts;
+    JScrollPane ans;
+    JTextArea textans;
     JLabel r;
     JLabel p;
-    JLabel cr;
-    JLabel cp;
+    JLabel a;
     String reactantsString;
     String productsString;
     public static void main(String[] args){
@@ -34,15 +33,14 @@ public class EquationInput implements ActionListener {
         submit = new JButton("Submit!");
         reactants = new JTextField(40);
         products = new JTextField(40);
-        creactants = new JTextArea(1,40);
-        cproducts = new JTextArea(1,40);
+        textans = new JTextArea(10,40);
+        ans = new JScrollPane(textans);
         frame = new JFrame("Window");
         panel = new JPanel();
         label1 = new JLabel("Chemistry");
         r = new JLabel("Reactants:");
         p = new JLabel("Products:");
-        cr = new JLabel("New Reactants:");
-        cp = new JLabel("New Products:");
+        a = new JLabel("Answer:");
         label1.setFont(new Font("Verdana",1,30));
         panel.add(label1);
         panel.add(r);
@@ -51,10 +49,8 @@ public class EquationInput implements ActionListener {
         panel.add(products);
         submit.addActionListener(this);
         panel.add(submit);
-        panel.add(cr);
-        panel.add(creactants);
-        panel.add(cp);
-        panel.add(cproducts);
+        panel.add(a);
+        panel.add(textans);
         Dimension d = new Dimension(500, 600);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
@@ -75,8 +71,7 @@ public class EquationInput implements ActionListener {
     public String returnprod(){
         return productsString;
     }
-    public void answer(String cre, String cpr){
-        creactants.append(cre);
-        cproducts.append(cpr);
+    public void answer(String ans){
+        textans.append(ans);
     }
 }
