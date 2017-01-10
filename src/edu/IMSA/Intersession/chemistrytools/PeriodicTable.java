@@ -23,7 +23,7 @@ public class PeriodicTable {
     public Element getElement(String symbol){
         Element e;
         for(int i = 0; i<1; i++){
-            if (elm[i].getSymbol == symbol){
+            if (elm[i].getSymbol() == symbol){
                 e = elm[i];
             }
         }
