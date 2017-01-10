@@ -30,6 +30,14 @@ public class Element {
         return atomicNumb;
     }
     
+    public String getSymbol(){
+        return symbol;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
     public double getWeight() {
         return weight;
     }
