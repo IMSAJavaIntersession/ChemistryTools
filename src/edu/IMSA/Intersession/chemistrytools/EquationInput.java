@@ -37,10 +37,13 @@ public class EquationInput implements ActionListener {
         ans = new JScrollPane(textans);
         frame = new JFrame("Window");
         panel = new JPanel();
-        label1 = new JLabel("Chemistry");
+        label1 = new JLabel("Chemical Equation Balancer");
         r = new JLabel("Reactants:");
+        r.setFont(new Font("Verdana",1,15));
         p = new JLabel("Products:");
-        a = new JLabel("Answer:");
+        a = new JLabel("Balanced Chemical Equation:");
+        p.setFont(new Font("Verdana",1,15));
+        a.setFont(new Font("Verdana", 1, 25));
         label1.setFont(new Font("Verdana",1,30));
         panel.add(label1);
         panel.add(r);
