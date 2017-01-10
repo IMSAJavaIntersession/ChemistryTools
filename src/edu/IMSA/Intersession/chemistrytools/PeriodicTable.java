@@ -25,6 +25,8 @@ public class PeriodicTable {
         sym[0] = "H";
         sym[1] = "He";
         sym[2] = "Li";
+    }
+    public void getElement(String symbol){
         
         for(int i = 0; i<4; i++){
             if (sym[i] == symbol){
@@ -32,6 +34,6 @@ public class PeriodicTable {
             }
             else{}
         }
-        
     }
+        
 }

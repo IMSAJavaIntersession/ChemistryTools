@@ -59,7 +59,11 @@ public class MolecularFormula {
  public void MolecularWeight(){
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
+<<<<<<< HEAD
          System.out.println("Element is: " + elements.get(i));
+=======
+         elements.get(i);
+>>>>>>> origin/master
      }
  }
  

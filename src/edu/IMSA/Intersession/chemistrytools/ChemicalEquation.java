@@ -1,7 +1,6 @@
 package edu.IMSA.Intersession.chemistrytools;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class ChemicalEquation {
     String equation;
@@ -42,17 +41,5 @@ public class ChemicalEquation {
     public ArrayList getMolecules()
     {
         return moleculeList;
-    }
-    
-    public static void main(String[] args){
-        ChemicalEquation chem = new ChemicalEquation("H2 + O2 + C2 + Li8", "H2O + H5O7");
-        chem.seperateMolecules();
-        
-        ArrayList<String> output = chem.getMolecules();
-        
-        for(String k: output)
-        {
-            System.out.println(k);
-        }
     }
 }
