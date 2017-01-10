@@ -4,6 +4,7 @@ import java.util.*;
 
 public class ChemicalEquation {
     String equation;
+    
     String reactants;
     String products;
     
@@ -48,7 +49,11 @@ public class ChemicalEquation {
     public ArrayList getProducts(){
         return moleculeListProducts;
     }
-        public ArrayList getReactants(){
+    public ArrayList getReactants(){
         return moleculeListReactants;
+    }
+    
+    public String toString(){
+        return reactants + " + " products;
     }
 }
