@@ -20,15 +20,14 @@ public class PeriodicTable {
     public PeriodicTable(){
         
         elm[0] = new Element("Oxygen", 9, "O",15.9);
+        elm[1] = new Element("Hydrogen",1,"H",1.0);
     }
     public Element getElement(String symbol){
-        int n = 9000;
-        for(int i = 0; i<1; i++){
+        for(int i = 0; i<2; i++){
             if (elm[i].getSymbol() == symbol){
-                
-                n=i;
+                return elm[i];
             }
         }
-        return elm[n];
+        return null;
     }
 }
