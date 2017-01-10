@@ -53,14 +53,15 @@ public class MolecularFormula {
  public void MolecularWeight(){
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
-         
+         elements.get(i)
      }
  }
  
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("HE2F2OF");
-         one.MolecularWeight();
+         Element H = new Element("Hydrogen", 1, "H", 1.01);
+         
+         
      }
      
      
