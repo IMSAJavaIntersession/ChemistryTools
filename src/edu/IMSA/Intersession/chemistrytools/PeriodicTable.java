@@ -24,7 +24,7 @@ public class PeriodicTable {
     }
     public Element getElement(String symbol){
         for(int i = 0; i<2; i++){
-            if (elm[i].getSymbol() == symbol){
+            if (elm[i].getSymbol().equals(symbol)){
                 return elm[i];
             }
         }
