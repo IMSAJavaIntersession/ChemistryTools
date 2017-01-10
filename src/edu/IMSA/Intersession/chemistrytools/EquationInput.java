@@ -59,7 +59,7 @@ public class EquationInput implements ActionListener {
         frame.getContentPane().add(panel);
         frame.setVisible(true);
         frame.pack();
-        panel.setBackground(Color.RED);
+        panel.setBackground(new Color(193, 198, 252));
     }
     @Override
     public void actionPerformed(ActionEvent e){
