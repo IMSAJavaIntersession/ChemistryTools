@@ -17,23 +17,20 @@ public class MolecularFormula {
         
         if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
-            System.out.println(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1)));
             elements.add(pT.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
         }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
-          System.out.println(pT.getElement(Character.toString(formula.charAt(i))));
           elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i==0 & Character.isLetter(formula.charAt(i)))
         {
-            System.out.println(pT.getElement(Character.toString(formula.charAt(i))));
             elements.add(pT.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
         {
             int addElement = Character.getNumericValue(formula.charAt(i));
-            while (addElement>0)
+            while ((addElement-1)>0)
             {
                 elements.add(pT.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
                 addElement--;
@@ -42,7 +39,7 @@ public class MolecularFormula {
         else if (Character.isDigit(formula.charAt(i)))
         {
             int addElement = Character.getNumericValue(formula.charAt(i));
-            while (addElement>0)
+            while ((addElement-1)>0)
             {
                 elements.add(pT.getElement(Character.toString(formula.charAt(i-1))));
                 addElement--;
