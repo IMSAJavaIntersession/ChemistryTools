@@ -12,38 +12,49 @@ import java.awt.event.*;
  * @author student
  */
 public class EquationInput implements ActionListener {
-    JButton butt;
+    JButton submit;
     JFrame frame;
     JPanel panel;
     JLabel label1;
-    JTextArea reactants;
-    JTextArea products;
+    JTextField reactants;
+    JTextField products;
+    JTextArea creactants;
+    JTextArea cproducts;
     JLabel r;
     JLabel p;
+    JLabel cr;
+    JLabel cp;
     String reactantsString;
     String productsString;
     public static void main(String[] args){
         EquationInput window = new EquationInput();
         window.setup();
-        window.input();
     }
     public void setup(){
-        butt = new JButton("Exit");
-        reactants = new JTextArea(5,40);
-        products = new JTextArea(5,40);
+        submit = new JButton("Submit!");
+        reactants = new JTextField(40);
+        products = new JTextField(40);
+        creactants = new JTextArea(1,40);
+        cproducts = new JTextArea(1,40);
         frame = new JFrame("Window");
         panel = new JPanel();
         label1 = new JLabel("Chemistry");
         r = new JLabel("Reactants:");
         p = new JLabel("Products:");
+        cr = new JLabel("New Reactants:");
+        cp = new JLabel("New Products:");
         label1.setFont(new Font("Verdana",1,30));
         panel.add(label1);
         panel.add(r);
         panel.add(reactants);
         panel.add(p);
         panel.add(products);
-        butt.addActionListener(this);
-        panel.add(butt);
+        panel.add(cr);
+        panel.add(creactants);
+        panel.add(cp);
+        panel.add(cproducts);
+        submit.addActionListener(this);
+        panel.add(submit);
         Dimension d = new Dimension(500, 600);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
@@ -51,15 +62,10 @@ public class EquationInput implements ActionListener {
         frame.pack();
         panel.setBackground(Color.RED);
     }
-    public void input(){
-        reactantsString = JOptionPane.showInputDialog("Enter the reactants!");
-        productsString = JOptionPane.showInputDialog("Enter the products!");
-        reactants.append(reactantsString);
-        products.append(productsString);
-    }
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==butt){
-            System.exit(0);
+        if(e.getSource()==submit){
+            reactantsString = reactants.getText();
+            productsString = products.getText();
         }
     }
     public String returnreact(){
