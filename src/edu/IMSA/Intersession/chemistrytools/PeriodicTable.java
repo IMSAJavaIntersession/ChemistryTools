@@ -11,29 +11,22 @@ package edu.IMSA.Intersession.chemistrytools;
  */
 public class PeriodicTable { 
     
-    String[] elm = new String[3];
-    String[] sym = new String[3];
+    Element[] elm = new Element[3];
+    //String[] sym = new String[3];
     
     
     
-    public PeriodicTable(String symbol){
+    public PeriodicTable(){
         
-        elm[0] = "Hydrogen";
-        elm[1] = "Helium";
-        elm[2] = "Lithium";
-        
-        sym[0] = "H";
-        sym[1] = "He";
-        sym[2] = "Li";
+        elm[0] = new Element("Oxygen", 9, "O",15.9);
     }
     public Element getElement(String symbol){
         Element e;
-        String name = "";
-        for(int i = 0; i<4; i++){
-            if (sym[i] == symbol){
-                name = (elm[i]);
+        for(int i = 0; i<1; i++){
+            if (elm[i].getSymbol == symbol){
+                e = elm[i];
             }
         }
-        return new Element(name, 999, symbol, 999.999);
+        return e;
     }
 }
