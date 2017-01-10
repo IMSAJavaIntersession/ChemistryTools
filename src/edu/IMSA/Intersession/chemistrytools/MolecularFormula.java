@@ -11,24 +11,24 @@ public class MolecularFormula {
     
  public MolecularFormula(String formula)
  {
-     int i=0;
-     while (i<formula.length())
-     {
-        Character a = new Character(formula.charAt(i));
-        Character b = new Character(formula.charAt(i+1));
-        if (!Character.isDigit(a) && !Character.isDigit(b))
+     for (int i =0; i<formula.length(); i++)
+     {       
+        
+        if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
-            String toAdd = Character.toString(a) + Character.toString(b);
-            elements.add(toAdd);
-            i+=2;
-        }
-        else if(!Character.isDigit(a))
+            elements.add(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1)));
+        }   
+        else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
-          elements.add(Character.toString(a));
-          i++;
+          elements.add(Character.toString(formula.charAt(i)));
         }
+        else if(i==0 & Character.isLetter(formula.charAt(i)))
+        {
+            elements.add(Character.toString(formula.charAt(i)));
         }
-        i++;
+        
+        
+        }
      
           for (String element: elements)
           {
@@ -40,7 +40,7 @@ public class MolecularFormula {
 
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("H2O5");
+         MolecularFormula one = new MolecularFormula("H2FE2O");
      }
  }
 
