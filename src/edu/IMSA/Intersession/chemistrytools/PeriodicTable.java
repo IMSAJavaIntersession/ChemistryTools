@@ -14,6 +14,8 @@ public class PeriodicTable {
     String[] elm = new String[3];
     String[] sym = new String[3];
     
+    
+    
     public PeriodicTable(String symbol){
         
         elm[0] = "Hydrogen";
