@@ -54,6 +54,6 @@ public class ChemicalEquation {
     }
     
     public String toString(){
-        return reactants + " + " products;
+        return reactants + " + " + products;
     }
 }
