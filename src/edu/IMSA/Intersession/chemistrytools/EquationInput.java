@@ -62,6 +62,7 @@ public class EquationInput implements ActionListener {
         frame.pack();
         panel.setBackground(Color.RED);
     }
+    @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==submit){
             reactantsString = reactants.getText();
