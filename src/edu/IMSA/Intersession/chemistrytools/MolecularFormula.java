@@ -17,7 +17,7 @@ public class MolecularFormula {
         if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
             elements.add(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1)));
-        }   
+        }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
           elements.add(Character.toString(formula.charAt(i)));
@@ -26,22 +26,33 @@ public class MolecularFormula {
         {
             elements.add(Character.toString(formula.charAt(i)));
         }
-        
-        
+        else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
+        {
+            elements.add(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1)));
+        }
+       
+        else if (Character.isDigit(formula.charAt(i)))
+        {
+            elements.add(Character.toString(formula.charAt(i-1)));
+        }
         }
      
           for (String element: elements)
           {
               System.out.println(element);
-          }
- 
-              
+          }   
+          
+         
  }
+ 
+
 
      public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("H2FE2O");
      }
+     
+     
  }
 
 
