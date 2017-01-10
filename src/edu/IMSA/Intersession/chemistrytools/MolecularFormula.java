@@ -37,19 +37,15 @@ public class MolecularFormula {
         }
         }
      
-<<<<<<< HEAD
+
         for (String element: elements)
         {
             System.out.println(element);
         }     
-=======
-          for (String element: elements)
-          {
-              System.out.println(element);
-          }   
+ 
           
          
->>>>>>> origin/master
+
  }
  
 
@@ -57,13 +53,14 @@ public class MolecularFormula {
  public void MolecularWeight(){
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
-         System.out.println("Element is: " + elements.get(i));
+         
      }
  }
  
      public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("HE2F2OF");
+         one.MolecularWeight();
      }
      
      
