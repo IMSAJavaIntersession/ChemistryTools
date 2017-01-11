@@ -5,12 +5,19 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author student
  */
 public class PeriodicTable { 
     int n;
+private Scanner scan1;
+private ArrayList<String> elementList;
     
     Element[] elm = new Element[3];
     //String[] sym = new String[3];
@@ -30,4 +37,14 @@ public class PeriodicTable {
         }
         return null;
     }
+    public void loadFile() throws FileNotFoundException
+	{
+		scan1 = new Scanner (new File("test/pt-data.txt"));
+		elementList = new ArrayList<>();
+		while (scan1.hasNext())
+		{
+			elementList.add(scan1.nextLine());
+		}
+                System.out.println(elementList);
+        }
 }
