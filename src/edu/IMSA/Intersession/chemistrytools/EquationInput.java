@@ -25,6 +25,7 @@ public class EquationInput implements ActionListener {
     JLabel a;
     String reactantsString;
     String productsString;
+    //boolean done = false;
     public static void main(String[] args){
         EquationInput window = new EquationInput();
         window.setup();
