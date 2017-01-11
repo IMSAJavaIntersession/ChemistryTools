@@ -63,7 +63,7 @@ public class PeriodicTable {
     public static void populate()
     {
         try {
-            scan = new Scanner (new File("pt-data_2.txt"));
+            scan = new Scanner (new File("pt-data.txt"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
         }

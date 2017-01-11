@@ -86,8 +86,7 @@ public class Element {
         symbol = scan.next();
         name = scan.next();
         weight = scan.next();
-        double weight2 = Double.parseDouble(weight);
-        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight2);
+        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight);
         
         
     }
