@@ -63,7 +63,7 @@ private static ArrayList<Element> elementList;
     public static void populate()
     {
         try {
-            scan = new Scanner (new File("pt-data.txt"));
+            scan = new Scanner (new File("pt-data_2.txt"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
         }
