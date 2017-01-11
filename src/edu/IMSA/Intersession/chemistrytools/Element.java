@@ -16,14 +16,15 @@ public class Element {
     private int atomicNumb;
     private String symbol;
     private String name;
-    private double weight;
+    private double weight1;
+    private String weight;
     private Scanner scan;
     
     public Element(String name, int atomicNumb, String symbol, double weight){
         this.atomicNumb = atomicNumb;
         this.name = name;
         this.symbol = symbol;
-        this.weight = weight;
+        this.weight1 = weight1;
     }
 
     public int getAtomicNumber(){
@@ -38,7 +39,11 @@ public class Element {
         return name;
     }
     
-    public double getWeight() {
+    public double getWeight1() {
+        return weight1;
+    }
+    
+    public String getWeight(){
         return weight;
     }
     
@@ -80,8 +85,8 @@ public class Element {
         atomicNumb = scan.nextInt();
         symbol = scan.next();
         name = scan.next();
-        //weight = scan.nextDouble();
-        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name);
+        weight = scan.next();
+        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight1);
         
     }
 }

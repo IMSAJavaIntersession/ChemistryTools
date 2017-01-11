@@ -91,6 +91,7 @@ private static ArrayList<Element> elementList;
                 zx = 2;
                 System.out.println(elementList.get(i).getSymbol() + " " );
                 System.out.println(elementList.get(i).getAtomicNumber() + " " );
+                System.out.println(elementList.get(i).getWeight() + " " );
             }
         }
         if (zx == 0)
@@ -101,7 +102,7 @@ private static ArrayList<Element> elementList;
         Scanner scan = new Scanner(System.in);
         PeriodicTable n = new PeriodicTable();
         populate();
-        System.out.println("What element do you want info on?");
+        System.out.println("What element do you want info on? (tpye the first letter capital)");
         String findMe = scan.nextLine();
         n.search(findMe);
     }
