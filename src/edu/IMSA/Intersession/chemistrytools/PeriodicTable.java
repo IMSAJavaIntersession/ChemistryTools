@@ -23,37 +23,7 @@ public class PeriodicTable {
     private static String findMe;
 private static Scanner scan1;
 private static ArrayList<Element> elementList;
-    
-    Element[] elm = new Element[3];
-    //String[] sym = new String[3];
-    
-    
-    
-    /*public PeriodicTable(){
-        
-        elm[0] = new Element("Oxygen", 9, "O",15.9);
-        elm[1] = new Element("Hydrogen",1,"H",1.0);
-    }
-    */
-    public Element getElement(String symbol){
-        for(int i = 0; i<2; i++){
-            if (elm[i].getSymbol().equals(symbol)){
-                return elm[i];
-            }
-        }
-        return null;
-    }
-    /*public static void loadFile() throws FileNotFoundException
-	{
-		scan1 = new Scanner (new File("pt-data.txt"));
-		elementList = new ArrayList<>();
-		while (scan1.hasNext())
-		{
-			elementList.add(scan1.nextLine());
-		}
-                System.out.println(elementList);
-    }
-    */    
+      
 
     public PeriodicTable()
     {
@@ -75,35 +45,23 @@ private static ArrayList<Element> elementList;
             elementList.add( new Element(line));
         }
     }
-    public static ArrayList<Element> getElementList()
-    {
-        return elementList;
-    }
-    
-    public void search(String search)
+
+    public Element getElement(String search)
     //Type in a name and print out the ranks for each decade of that name
     {
-        int zx = 0;
-        for(int i = 0; i < elementList.size(); i++)
+        for(Element e: elementList)
         {
-            if(search.equals(elementList.get(i).getName()))
+            if((e.getSymbol()).equals(search))
             {
-                zx = 2;
-                System.out.println(elementList.get(i).getSymbol() + " " );
-                System.out.println(elementList.get(i).getAtomicNumber() + " " );
-                System.out.println(elementList.get(i).getWeight() + " " );
+                return e;
             }
         }
-        if (zx == 0)
-            System.out.print("Not FOund Baka");
+        return null;
     }
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         PeriodicTable n = new PeriodicTable();
-        populate();
-        System.out.println("What element do you want info on? (tpye the first letter capital)");
-        String findMe = scan.nextLine();
-        n.search(findMe);
+        populate();    
     }
 }
