@@ -70,7 +70,7 @@ public class MolecularFormula {
      System.out.println("Molecular Mass is: " + molecularMass);
  }
  
-     public static void main (String[] args) throws FileNotFoundException
+     public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("H2O");
          one.MolecularWeight();

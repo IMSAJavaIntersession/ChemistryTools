@@ -44,6 +44,7 @@ public class Element {
     }
     
     public String getWeight(){
+        System.out.println("yo");
         return weight;
     }
     
@@ -86,7 +87,8 @@ public class Element {
         symbol = scan.next();
         name = scan.next();
         weight = scan.next();
-        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight);
+        double weight2 = Double.parseDouble(weight);
+        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight2);
         
         
     }
