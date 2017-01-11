@@ -8,7 +8,6 @@ package edu.IMSA.Intersession.chemistrytools;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -74,6 +73,6 @@ private static ArrayList<Element> elementList;
         return elementList;
     }
     public static void main(String[] args) throws FileNotFoundException {
-        PeriodicTable n = new PeriodicTable();
+        
     }
 }

@@ -5,11 +5,12 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 public class MolecularFormula {
     ArrayList<Element> elements=new ArrayList<Element>();
 
- public MolecularFormula(String formula)
+ public MolecularFormula(String formula) throws FileNotFoundException
  {
      PeriodicTable pT = new PeriodicTable();
      for (int i =0; i<formula.length(); i++)
