@@ -74,5 +74,14 @@ public class Element {
             System.out.println(elementss[i]);
         }
 */
+    public Element(String line)
+    {
+        scan = new Scanner(line);
+        atomicNumb = scan.nextInt();
+        symbol = scan.next();
+        name = scan.next();
+        weight = scan.nextInt();
+        
+    }
 }
 
