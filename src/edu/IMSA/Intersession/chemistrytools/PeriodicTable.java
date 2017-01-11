@@ -21,8 +21,8 @@ public class PeriodicTable {
     private static Scanner scan;
     int n;
     private static String findMe;
-private static Scanner scan1;
-private static ArrayList<Element> elementList;
+    private static Scanner scan1;
+    private static ArrayList<Element> elementList;
     
     Element[] elm = new Element[3];
     //String[] sym = new String[3];
