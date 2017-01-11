@@ -80,7 +80,8 @@ public class Element {
         atomicNumb = scan.nextInt();
         symbol = scan.next();
         name = scan.next();
-        weight = scan.nextInt();
+        //weight = scan.nextDouble();
+        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name);
         
     }
 }

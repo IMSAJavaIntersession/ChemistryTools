@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +20,7 @@ public class PeriodicTable {
 
     private static Scanner scan;
     int n;
+    private static String findMe;
 private static Scanner scan1;
 private static ArrayList<Element> elementList;
     
@@ -52,15 +55,19 @@ private static ArrayList<Element> elementList;
     }
     */    
 
-    public PeriodicTable() throws FileNotFoundException
+    public PeriodicTable()
     {
-        scan = new Scanner (new File("pt-data.txt"));
         elementList = new ArrayList<>();
-        populate();
     }
     
     public static void populate()
     {
+        try {
+            scan = new Scanner (new File("pt-data.txt"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        elementList = new ArrayList<>();
         String line;
         while(scan.hasNextLine())
         {
@@ -72,7 +79,30 @@ private static ArrayList<Element> elementList;
     {
         return elementList;
     }
-    public static void main(String[] args) throws FileNotFoundException {
-        
+    
+    public void search(String search)
+    //Type in a name and print out the ranks for each decade of that name
+    {
+        int zx = 0;
+        for(int i = 0; i < elementList.size(); i++)
+        {
+            if(search.equals(elementList.get(i).getName()))
+            {
+                zx = 2;
+                System.out.println(elementList.get(i).getSymbol() + " " );
+                System.out.println(elementList.get(i).getAtomicNumber() + " " );
+            }
+        }
+        if (zx == 0)
+            System.out.print("Not FOund Baka");
+    }
+    
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        PeriodicTable n = new PeriodicTable();
+        populate();
+        System.out.println("What element do you want info on?");
+        String findMe = scan.nextLine();
+        n.search(findMe);
     }
 }
