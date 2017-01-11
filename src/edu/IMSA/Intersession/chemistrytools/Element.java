@@ -86,7 +86,8 @@ public class Element {
         symbol = scan.next();
         name = scan.next();
         weight = scan.next();
-        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight1);
+        System.out.println("Number: "+ atomicNumb + " Symbol: " + symbol + " Name: " + name + " Weight: " + weight);
+        
         
     }
 }
