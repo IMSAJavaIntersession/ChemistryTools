@@ -44,6 +44,7 @@ public class Element {
     }
     
     public String getWeight(){
+        System.out.println("yo");
         return weight;
     }
     
