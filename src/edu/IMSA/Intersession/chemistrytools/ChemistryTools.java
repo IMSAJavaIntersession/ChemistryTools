@@ -28,7 +28,7 @@ public class ChemistryTools implements ActionListener {
     //boolean done = false;
     public static void main(String[] args){
     	
-        EquationInput window = new EquationInput();
+        ChemistryTools window = new ChemistryTools();
         window.setup();
     }
     public void setup(){
