@@ -63,14 +63,16 @@ public class MolecularFormula {
 
          System.out.println("Element is: " + elements.get(i));
 
-         elements.get(i);
+         molecularMass+=elements.get(i).getWeight();
 
      }
+     System.out.println("Molecular Mass is: " + molecularMass);
  }
  
      public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("H2O");
+         one.MolecularWeight();
      }
      
      
