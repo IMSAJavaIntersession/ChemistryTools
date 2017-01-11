@@ -11,7 +11,7 @@ import java.awt.event.*;
  *
  * @author student
  */
-public class EquationInput implements ActionListener {
+public class ChemistryTools implements ActionListener {
     JButton submit;
     JFrame frame;
     JPanel panel;
@@ -27,6 +27,7 @@ public class EquationInput implements ActionListener {
     String productsString;
     //boolean done = false;
     public static void main(String[] args){
+    	
         EquationInput window = new EquationInput();
         window.setup();
     }
