@@ -10,30 +10,29 @@ import java.util.*;
 public class MolecularFormula {
     ArrayList<Element> elements=new ArrayList<Element>();
 
- public MolecularFormula(String formula) throws FileNotFoundException
+ public MolecularFormula(String formula)
  {
-     PeriodicTable pT = new PeriodicTable();
      for (int i =0; i<formula.length(); i++)
      {       
         
         if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
         {
-            elements.add(pT.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
+            elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
         }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
-          elements.add(pT.getElement(Character.toString(formula.charAt(i))));
+          elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i==0 & Character.isLetter(formula.charAt(i)))
         {
-            elements.add(pT.getElement(Character.toString(formula.charAt(i))));
+            elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
         {
             int addElement = Character.getNumericValue(formula.charAt(i));
             while ((addElement-1)>0)
             {
-                elements.add(pT.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
+                elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
         }
@@ -42,7 +41,7 @@ public class MolecularFormula {
             int addElement = Character.getNumericValue(formula.charAt(i));
             while ((addElement-1)>0)
             {
-                elements.add(pT.getElement(Character.toString(formula.charAt(i-1))));
+                elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
         }
@@ -64,7 +63,7 @@ public class MolecularFormula {
 
          System.out.println("Element is: " + elements.get(i));
 
-         molecularMass+=elements.get(i).getWeight();
+         molecularMass+=elements.get(i).getWeight1();
 
      }
      System.out.println("Molecular Mass is: " + molecularMass);

@@ -53,7 +53,7 @@ private static ArrayList<Element> elementList;
         }
     }
 
-    public Element getElement(String search)
+    public static Element getElement(String search)
     //Type in a name and print out the ranks for each decade of that name
     {
         for(Element e: elementList)
