@@ -1,6 +1,5 @@
 package edu.IMSA.Intersession.chemistrytools;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.HashMap;
 
@@ -55,6 +54,13 @@ public class ChemicalEquation {
         return moleculeListReactants;
     }
     
+    public void incrementFromProducts(MolecularFormula key){
+        moleculeListProducts.put(key, moleculeListProducts.get(key) + 1);
+    }
+    public void incrementFromReactants(MolecularFormula key){
+        moleculeListReactants.put(key, moleculeListReactants.get(key) + 1);
+    }
+    
     public String toString(){
         return reactants + " --> " + products;
     }
@@ -65,8 +71,13 @@ public class ChemicalEquation {
         System.out.println(chem.toString());
         
         for (Map.Entry<MolecularFormula, Integer> entry : chem.getProducts().entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue().toString());
+            System.out.println(entry.getKey() + "/" + entry.getValue());
         }
+        for (Map.Entry<MolecularFormula, Integer> entry : chem.getReactants().entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
+        
+        //chem.incrementFromReactants(MolecularFormula(chem.moleculeStringListReactants[i]));
         
     }
 }
