@@ -1,5 +1,6 @@
 package edu.IMSA.Intersession.chemistrytools;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class ChemicalEquation {
@@ -14,7 +15,7 @@ public class ChemicalEquation {
     ArrayList<String> moleculeStringListReactants = new ArrayList<String>();
     ArrayList<MolecularFormula> moleculeListReactants = new ArrayList<MolecularFormula>();
     
-    public ChemicalEquation(String r, String p)
+    public ChemicalEquation(String r, String p) throws FileNotFoundException
     {
         reactants = r;
         products = p;
@@ -36,7 +37,7 @@ public class ChemicalEquation {
             moleculeStringListProducts.add(parts2[i].trim());
     }
     
-    public void stringToMolecules()
+    public void stringToMolecules() throws FileNotFoundException
     {
         for(String mol: moleculeStringListProducts){
             moleculeListProducts.add(new MolecularFormula(mol));

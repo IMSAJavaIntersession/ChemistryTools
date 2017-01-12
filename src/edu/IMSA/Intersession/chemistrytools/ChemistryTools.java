@@ -7,6 +7,9 @@ package edu.IMSA.Intersession.chemistrytools;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author student
@@ -25,6 +28,9 @@ public class ChemistryTools implements ActionListener {
     JLabel a;
     String reactantsString;
     String productsString;
+    ChemicalEquation ce;
+    String strans;
+    //boolean done;
     //boolean done = false;
     public static void main(String[] args){
     	
@@ -68,6 +74,15 @@ public class ChemistryTools implements ActionListener {
         if(e.getSource()==submit){
             reactantsString = reactants.getText();
             productsString = products.getText();
+            try {
+                ce = new ChemicalEquation(reactantsString,productsString);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ChemistryTools.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            strans = ce.toString();
+            textans.append(strans);
+            
+            //done=true;
         }
     }
     public String returnreact(){
