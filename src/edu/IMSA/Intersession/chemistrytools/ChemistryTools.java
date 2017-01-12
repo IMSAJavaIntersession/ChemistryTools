@@ -80,7 +80,7 @@ public class ChemistryTools implements ActionListener {
                 Logger.getLogger(ChemistryTools.class.getName()).log(Level.SEVERE, null, ex);
             }
             strans = ce.toString();
-            textans.append(strans);
+            textans.setText(strans);
             
             //done=true;
         }
@@ -92,6 +92,6 @@ public class ChemistryTools implements ActionListener {
         return productsString;
     }
     public void answer(String ans){
-        textans.append(ans);
+        textans.setText(ans);
     }
 }
