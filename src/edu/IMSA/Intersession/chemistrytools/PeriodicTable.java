@@ -25,9 +25,16 @@ private static Scanner scan1;
 private static ArrayList<Element> elementList;
       
 
-    public PeriodicTable()
+    private PeriodicTable()
     {
+        
+    }
+    
+    static {
+        
         elementList = new ArrayList<>();
+        populate();
+        
     }
     
     public static void populate()
