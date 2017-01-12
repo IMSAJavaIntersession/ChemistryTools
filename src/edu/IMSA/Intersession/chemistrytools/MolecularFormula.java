@@ -67,7 +67,7 @@ public class MolecularFormula {
      System.out.println("Molecular Mass is: " + molecularMass);
  }
  
- public void addElement(Map<Element,Integer> elementMap)
+ public Map<Element,Integer> addElement(Map<Element,Integer> elementMap)
  {
      for (Element e:elements)
      {
@@ -81,7 +81,7 @@ public class MolecularFormula {
              elementMap.put(e,1);
          }
      }
-     System.out.println(elementMap);
+     return elementMap;
  }
  
      public static void main (String[] args)
