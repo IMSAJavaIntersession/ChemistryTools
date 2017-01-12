@@ -9,9 +9,10 @@ import java.io.FileNotFoundException;
 import java.util.*;
 public class MolecularFormula {
     ArrayList<Element> elements=new ArrayList<Element>();
-
+    String formula;
  public MolecularFormula(String formula)
  {
+     this.formula = formula;
      for (int i =0; i<formula.length(); i++)
      {       
         
@@ -72,6 +73,10 @@ public class MolecularFormula {
          one.MolecularWeight();
      }
      
+    public String toString(){
+        return formula;
+        
+    }
      
  }
 

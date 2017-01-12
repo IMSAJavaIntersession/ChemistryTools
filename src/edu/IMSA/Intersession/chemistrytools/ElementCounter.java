@@ -20,6 +20,7 @@ public class ElementCounter {
     
     public void updateElements(MolecularFormula molecule){
   //      molecule.getelements
+   //     for (Map.Entry<)
     }
 }
 
