@@ -20,5 +20,10 @@ public class ElementCounter {
       System.out.println(" Map Elements");
       System.out.print("\t" + m1);
    }
+    
+    public void updateElements(MolecularFormula molecule){
+  //      molecule.getelements
+    }
 }
-}
+
+
