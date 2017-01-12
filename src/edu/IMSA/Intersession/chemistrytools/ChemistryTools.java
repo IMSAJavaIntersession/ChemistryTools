@@ -76,7 +76,7 @@ public class ChemistryTools implements ActionListener {
             productsString = products.getText();
             try {
                 ce = new ChemicalEquation(reactantsString,productsString);
-            } catch (FileNotFoundException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(ChemistryTools.class.getName()).log(Level.SEVERE, null, ex);
             }
             strans = ce.toString();
