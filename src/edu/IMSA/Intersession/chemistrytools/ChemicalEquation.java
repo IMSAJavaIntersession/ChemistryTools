@@ -65,7 +65,7 @@ public class ChemicalEquation {
         System.out.println(chem.toString());
         
         for (Map.Entry<MolecularFormula, Integer> entry : chem.getProducts().entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue());
+            System.out.println(entry.getKey() + "/" + entry.getValue().toString());
         }
         
     }
