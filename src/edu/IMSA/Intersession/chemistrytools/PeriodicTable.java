@@ -66,7 +66,6 @@ private static ArrayList<Element> elementList;
         return null;
     }
     
- 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         PeriodicTable n = new PeriodicTable();
