@@ -67,16 +67,36 @@ public class MolecularFormula {
      System.out.println("Molecular Mass is: " + molecularMass);
  }
  
+ public void addElement(Map<Element,Integer> elementMap)
+ {
+     for (Element e:elements)
+     {
+         if (elementMap.containsKey(e))
+         {
+             elementMap.put(e,elementMap.get(e)+1);
+         }
+         
+         else
+         {
+             elementMap.put(e,1);
+         }
+     }
+     System.out.println(elementMap);
+ }
+ 
      public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("H2O2");
          one.MolecularWeight();
+         Map <Element, Integer> elementM = new HashMap<Element,Integer>();
+         one.addElement(elementM);
      }
      
     public String toString(){
         return formula;
         
     }
+     
      
  }
 
