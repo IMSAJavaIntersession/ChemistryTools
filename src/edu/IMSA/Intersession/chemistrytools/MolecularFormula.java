@@ -55,23 +55,20 @@ public class MolecularFormula {
         
  }
  
-
-
- public void MolecularWeight(){
+ public void MolecularWeight()
+ {
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
 
-         System.out.println("Element is: " + elements.get(i));
-
          molecularMass+=elements.get(i).getWeight1();
-
+         System.out.println("Weight" + elements.get(i).getWeight1());
      }
      System.out.println("Molecular Mass is: " + molecularMass);
  }
  
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("H2O");
+         MolecularFormula one = new MolecularFormula("H2O2");
          one.MolecularWeight();
      }
      
