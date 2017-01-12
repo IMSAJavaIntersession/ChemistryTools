@@ -5,7 +5,6 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 public class MolecularFormula {
     ArrayList<Element> elements=new ArrayList<Element>();
@@ -67,10 +66,36 @@ public class MolecularFormula {
      System.out.println("Molecular Mass is: " + molecularMass);
  }
  
+    public void getElements(Map<Element,Integer> element )
+    {
+        Boolean isThere=false;
+        for (int i=0; i<elements.size();i++)
+        {
+            if (i>0)
+            {
+                for (int z=0; z<i;z++)
+                {
+                    if(elements.get(z).getSymbol().equals(elements.get(i).getSymbol()))
+                    {
+                        Integer value=element.get(elements.get(z));
+                        element.remove(elements.get(z));
+                        element.put(elements.get(z),value++);
+                        isThere=true;
+                    }
+                }
+            }
+            if (!isThere)
+                element.put(elements.get(i),new Integer(1));
+
+        }
+          
+        System.out.println(element);
+    }
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("H2O2");
-         one.MolecularWeight();
+         MolecularFormula one = new MolecularFormula("H2");
+         Map<Element,Integer> m = new HashMap<Element,Integer>();
+         one.getElements(m);
      }
      
     public String toString(){
