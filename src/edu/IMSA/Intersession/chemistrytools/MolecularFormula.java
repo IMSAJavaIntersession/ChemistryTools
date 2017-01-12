@@ -84,6 +84,28 @@ public class MolecularFormula {
      return elementMap;
  }
  
+ public boolean equals(Object O) 
+ {
+     MolecularFormula mC=(MolecularFormula) O;
+     if (mC.getFormula().equals(this.formula))
+     {
+         return true;
+     }
+     else
+     {
+         return false;
+     }
+ }
+ 
+ public int hashCode()
+ {
+     return formula.hashCode();
+ }
+ 
+    public String getFormula()
+    {
+        return formula;
+    }
      public static void main (String[] args)
      {
          MolecularFormula one = new MolecularFormula("H2O2");

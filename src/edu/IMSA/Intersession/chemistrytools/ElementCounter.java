@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class ElementCounter {
 
-    public Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> map){
+    public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> map){
             Integer val1=0;
             Integer val2=0;
             Map <Element,String> returnMap = new HashMap<>();
@@ -34,14 +34,47 @@ public class ElementCounter {
          return returnMap;
     }
 
-    
+    public static String balanceOneElement(String ratio)
+    {
+       int val1=0;
+       int val2=0;
+       int greater=0;
+       int lcm;
+        val1=Character.getNumericValue(ratio.charAt(0));
+        val2=Character.getNumericValue(ratio.charAt(2));
+        if (val1>=val2)
+        {
+            greater=val1;
+        }
+        else if(val1<val2)
+        {
+            greater=val2;
+        }
+        for (int i=greater; i<=val1*val2;i++)
+        {
+             double va1=val1;
+             double va2=val2;
+             double val1d=i/va1;
+             double val2d=i/va2;
+             if (val1d%1==0 && val2d%1==0)
+             {
+                     lcm=i;
+                     val1=lcm/val1;
+                     val2=lcm/val2;
+                     break;
+             }
+        }
+        
+        return Integer.toString(val1)+":" + Integer.toString(val2);
+    }
 
     
-     public static void main(String[] args) {
-      ElementCounter eC = new ElementCounter();
+     public static void main(String[] args) 
+     {
+           System.out.println(balanceOneElement("6:8"));
       
       
-   }
+     }
 }
 
 
