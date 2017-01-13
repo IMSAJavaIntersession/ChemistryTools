@@ -20,9 +20,14 @@ public class ElementCounter {
             for (Map.Entry<Element,Integer> e:m1.entrySet())
             {
                 val1 = e.getValue();
-                if (m1.containsKey(e.getKey()))
+                if (map.containsKey(e.getKey()))
                 {
                     val2= m1.get(e.getKey());
+                    if (val1==val2)
+                    {
+                        val2=0;
+                        val1=0;
+                    }
                 }
                 else
                 {
@@ -72,6 +77,8 @@ public class ElementCounter {
     
      public static void main(String[] args) 
      {
+           Map <Element,Integer> m1=new HashMap<>();
+           System.out.println();
            System.out.println(balanceOneElement("6:8"));
       
       
