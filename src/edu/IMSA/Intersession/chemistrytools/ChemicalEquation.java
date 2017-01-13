@@ -1,5 +1,6 @@
 package edu.IMSA.Intersession.chemistrytools;
 
+import edu.IMSA.Intersession.Elements.Element;
 import java.util.*;
 import java.util.HashMap;
 
@@ -135,7 +136,7 @@ public class ChemicalEquation {
         return returnString;
     }
     
-    public static void main(String[] args){
+/*    public static void main(String[] args){
         ChemicalEquation chem = new ChemicalEquation("H2O + O2", "H2O");
         
         System.out.println(chem.toString());
@@ -162,5 +163,5 @@ public class ChemicalEquation {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
         
-    }
+    }*/
 }
