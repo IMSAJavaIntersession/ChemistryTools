@@ -106,7 +106,33 @@ public class ChemicalEquation {
     }
     
     public String toString(){
-        return reactants + " --> " + products;
+        String returnString = "";
+        
+        int counter = 0;
+        
+        for(Map.Entry<MolecularFormula, Integer> mol : getReactants().entrySet()){
+            if(mol.getValue() != 1)returnString += mol.getValue();
+            returnString += mol.getKey();
+            
+            counter++;
+            
+            if(getReactants().size() != counter) returnString += " + ";
+        }
+        
+        returnString += " --> ";
+        
+        counter = 0;
+        
+        for(Map.Entry<MolecularFormula, Integer> mol : getProducts().entrySet()){
+            if(mol.getValue() != 1)returnString += mol.getValue();
+            returnString += mol.getKey(); 
+            
+            counter++;
+            
+            if(getProducts().size() != counter) returnString += " + ";
+        }
+        
+        return returnString;
     }
     
     public static void main(String[] args){
