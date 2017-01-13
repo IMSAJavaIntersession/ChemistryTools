@@ -17,8 +17,15 @@ public class MolecularFormula {
      this.formula = formula;
      for (int i =0; i<formula.length(); i++)
      {       
-        
-        if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)))
+        if (i<formula.length()-1 && Character.isLetter(formula.charAt(i)) && Character.isLetter(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i))&& Character.isUpperCase(formula.charAt(i+1)))
+        {
+            elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
+            Element a=PeriodicTable.getElement(Character.toString(formula.charAt(i+1)));
+            System.out.println(a);
+            elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i+1))));
+            i=i+1;
+        }
+        else if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)) && Character.isLowerCase(formula.charAt(i+1)))
         {
             elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
         }
@@ -30,12 +37,23 @@ public class MolecularFormula {
         {
             elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
         }
-        else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)))
+        else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)) && Character.isLowerCase(formula.charAt(i-1)))
         {
             int addElement = Character.getNumericValue(formula.charAt(i));
             while ((addElement-1)>0)
             {
                 elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
+                addElement--;
+            }
+        }
+                        
+        else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)) && Character.isUpperCase(formula.charAt(i-1)))
+        {
+            int addElement = Character.getNumericValue(formula.charAt(i));
+            while ((addElement-1)>0)
+            {
+                Element e= PeriodicTable.getElement(Character.toString(formula.charAt(i-1)));
+                elements.add(e);
                 addElement--;
             }
         }
@@ -112,7 +130,7 @@ public class MolecularFormula {
     }
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("C1O2");
+         MolecularFormula one = new MolecularFormula("CO2");
          one.MolecularWeight();
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
          one.addElement(elementM, 2);
