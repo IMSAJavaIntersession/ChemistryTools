@@ -73,9 +73,20 @@ public class ChemicalEquation {
     }
     
     public void balance(){
-        Map<Element, String> differenceMap = ElementCounter.compareMap(elementListProducts, elementListReactants);
+        Map<Element, String> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
+        
         while(!differenceMap.isEmpty()){
+            System.out.println("SOME DIFFERENCES");
             
+            for (Map.Entry<Element, String> entry : differenceMap.entrySet()){
+                System.out.println(entry.getKey() + "/" + entry.getValue());
+                
+                System.out.println(ElementCounter.balanceOneElement(entry.getValue()));
+            }
+            
+            
+            
+            break;
         }
     }
     
@@ -109,7 +120,7 @@ public class ChemicalEquation {
         return returnString;
     }
     public static void main(String[] args){
-        ChemicalEquation chem = new ChemicalEquation("H2O + O2", "H2O");
+        ChemicalEquation chem = new ChemicalEquation("H2 + O2", "H2O");
         
         System.out.println(chem.toString());
         
@@ -134,6 +145,8 @@ public class ChemicalEquation {
         for (Map.Entry<Element, Integer> entry : chem.elementListReactants.entrySet()){
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
+        
+        chem.balance();
         
     }
 }
