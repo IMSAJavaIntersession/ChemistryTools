@@ -13,16 +13,16 @@ import java.util.*;
  */
 public class ElementCounter {
 
-    public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> map){
+    public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> m2){
         Map <Element,String> returnMap = new HashMap<>();
         for (Map.Entry<Element,Integer> e:m1.entrySet())
         {
             int val1=0;
             int val2=0;
             val1 = e.getValue();
-            if (map.containsKey(e.getKey()))
+            if (m2.containsKey(e.getKey()))
             {
-                val2= m1.get(e.getKey());
+                val2= m2.get(e.getKey());
             }
             if (val1!=val2)
             {
