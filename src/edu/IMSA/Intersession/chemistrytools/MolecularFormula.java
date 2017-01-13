@@ -106,12 +106,11 @@ public class MolecularFormula {
      return elementMap;
  }
  
- public int ElementCounter(String symbol){
+ public int getElementCount(String symbol){
     int counter = 0;
     for (int i = 0; i<elements.size(); i++){
         if (symbol.equals(elements.get(i).getSymbol())){
             counter++;
-            System.out.println("hi");
         }
     }
     System.out.println("Counter: " + counter);
