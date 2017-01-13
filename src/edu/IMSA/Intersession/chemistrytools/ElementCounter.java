@@ -33,7 +33,8 @@ public class ElementCounter {
 
 
          
-         return returnMap;
+                  System.out.println(returnMap);
+                  return returnMap;
     }
 
     public static String balanceOneElement(String ratio)
@@ -74,7 +75,11 @@ public class ElementCounter {
      public static void main(String[] args) 
      {
            Map <Element,Integer> m1=new HashMap<>();
-           System.out.println();
+           Map <Element,Integer> m2=new HashMap<>();
+           MolecularFormula.of("H2").addElement(m1, 1);
+           MolecularFormula.of("O2").addElement(m1,1);
+           MolecularFormula.of("H2O").addElement(m2,2);
+           ElementCounter.compareMap(m1,m2);
            System.out.println(balanceOneElement("6:8"));
       
       
