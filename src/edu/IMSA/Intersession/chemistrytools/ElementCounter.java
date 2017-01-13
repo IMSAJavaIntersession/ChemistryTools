@@ -14,8 +14,8 @@ import java.util.*;
 public class ElementCounter {
 
     public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> map){
-            int val1=0;
-            int val2=0;
+            int val1=7;
+            int val2=7;
             Map <Element,String> returnMap = new HashMap<>();
             for (Map.Entry<Element,Integer> e:m1.entrySet())
             {
