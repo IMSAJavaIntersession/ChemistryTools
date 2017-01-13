@@ -69,8 +69,9 @@ public class MolecularFormula {
      return molecularMass;
  }
  
- public Map<Element,Integer> addElement(Map<Element,Integer> elementMap)
+ public Map<Element,Integer> addElement(Map<Element,Integer> elementMap, int molecules)
  {
+     for (int i = 0; i<molecules; i++){
      for (Element e:elements)
      {
          if (elementMap.containsKey(e))
@@ -82,6 +83,7 @@ public class MolecularFormula {
          {
              elementMap.put(e,1);
          }
+     }
      }
      return elementMap;
  }
