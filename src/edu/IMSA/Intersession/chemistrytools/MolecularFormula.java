@@ -121,7 +121,7 @@ public class MolecularFormula {
      return elementMap;
  }
  
- public boolean containsELement(Element e)
+ public boolean containsElement(Element e)
  {
      boolean contains=false;
      for(int i=0; i<elements.size();i++)

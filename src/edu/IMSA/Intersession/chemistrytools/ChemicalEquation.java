@@ -18,6 +18,8 @@ public class ChemicalEquation {
     HashMap<MolecularFormula, Integer> moleculeListReactants = new HashMap<>();
     HashMap<Element, Integer> elementListReactants = new HashMap<>();
     
+    ArrayList<String> stepsList = new ArrayList<>();
+    
     public ChemicalEquation(String r, String p){
         reactants = r;
         products = p;
@@ -39,10 +41,16 @@ public class ChemicalEquation {
     }
     public void stringToMolecules(){
         for(String mol: moleculeStringListProducts){
-            moleculeListProducts.put(new MolecularFormula(mol), new Integer(1));
+            MolecularFormula mf= MolecularFormula.of(mol);
+            if(mf == null)System.out.println("Oh no we have a problem!");
+            
+            moleculeListProducts.put(MolecularFormula.of(mol), new Integer(1));
         }
         for(String mol: moleculeStringListReactants){
-            moleculeListReactants.put(new MolecularFormula(mol), new Integer(1));
+            MolecularFormula mf= MolecularFormula.of(mol);
+            if(mf == null)System.out.println("Oh no we have a problem!");
+            
+            moleculeListReactants.put(MolecularFormula.of(mol), new Integer(1));
         }
     }  
     public void moleculesToElements(){
@@ -51,11 +59,11 @@ public class ChemicalEquation {
         elementListReactants.clear();
         
         for(Map.Entry<MolecularFormula, Integer> mol: getProducts().entrySet()){
-            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListProducts, mol.getValue());
+            mol.getKey().addElement(elementListProducts, mol.getValue());
         }
         
         for(Map.Entry<MolecularFormula, Integer> mol: getReactants().entrySet()){
-            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListReactants, mol.getValue());
+            mol.getKey().addElement(elementListReactants, mol.getValue());
         }
     }
     
@@ -73,23 +81,52 @@ public class ChemicalEquation {
     }
     
     public void balance(){
-        Map<Element, String> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
-        
-        while(!differenceMap.isEmpty()){
-            System.out.println("SOME DIFFERENCES");
+        for(int i = 0; i < 100; i++){
+            moleculesToElements();
+            Map<Element, String> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
+            if(differenceMap.isEmpty())break;
             
             for (Map.Entry<Element, String> entry : differenceMap.entrySet()){
                 System.out.println(entry.getKey() + "/" + entry.getValue());
-                
-                System.out.println(ElementCounter.balanceOneElement(entry.getValue()));
             }
             
+            for (Map.Entry<Element, String> entry : differenceMap.entrySet()){
+                Element el = entry.getKey();
+                String ratio = ElementCounter.balanceOneElement(entry.getValue());
+                
+                MolecularFormula reactantMol = findMolHoldingEl(el, moleculeListReactants);
+                MolecularFormula productMol = findMolHoldingEl(el, moleculeListProducts);
+                
+                String[] parts = ratio.split(":");
+                int reactantRatio = Integer.valueOf(parts[0]);
+                int productRatio = Integer.valueOf(parts[1]);
+                
+                moleculeListReactants.put(reactantMol, moleculeListReactants.get(reactantMol) * reactantRatio);
+                moleculeListProducts.put(productMol, moleculeListProducts.get(productMol) * productRatio);
+                
+                break;
+            }
             
-            
-            break;
+            stepsList.add(toString() + "\n");
         }
     }
-    
+    public MolecularFormula findMolHoldingEl(Element el, Map<MolecularFormula, Integer> map){
+        for(Map.Entry<MolecularFormula, Integer> molecule: map.entrySet()){
+            if(molecule.getKey().containsElement(el)) return molecule.getKey();
+        }
+        return null;
+    }
+    public String getSteps(){
+        String returnString = "";
+        
+        for(int i = 1; i <=stepsList.size(); i++){
+            returnString += ("Step " + i + ":" + stepsList.get(i-1));
+        }
+        
+        if(returnString == "") returnString = "No Steps.";
+        
+        return returnString;
+    }
     public String toString(){
         String returnString = "";
         
@@ -124,15 +161,20 @@ public class ChemicalEquation {
         
         System.out.println(chem.toString());
         
-        for (Map.Entry<MolecularFormula, Integer> entry : chem.getProducts().entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue());
-        }
         for (Map.Entry<MolecularFormula, Integer> entry : chem.getReactants().entrySet()){
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
+        for (Map.Entry<MolecularFormula, Integer> entry : chem.getProducts().entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
         
-        //chem.incrementFromProducts();
         chem.moleculesToElements();
+        
+        System.out.println("----------------");
+
+        for (Map.Entry<Element, Integer> entry : chem.elementListReactants.entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
         
         System.out.println("----------------");
         
@@ -140,13 +182,8 @@ public class ChemicalEquation {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
         
-        System.out.println("----------------");
-        
-        for (Map.Entry<Element, Integer> entry : chem.elementListReactants.entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue());
-        }
-        
         chem.balance();
         
+        System.out.println(chem.getSteps());
     }
 }
