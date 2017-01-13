@@ -18,8 +18,7 @@ public class ChemicalEquation {
     HashMap<MolecularFormula, Integer> moleculeListReactants = new HashMap<>();
     HashMap<Element, Integer> elementListReactants = new HashMap<>();
     
-    public ChemicalEquation(String r, String p)
-    {
+    public ChemicalEquation(String r, String p){
         reactants = r;
         products = p;
         
@@ -27,8 +26,7 @@ public class ChemicalEquation {
         stringToMolecules();
     }
     
-    public void seperateMoleculeStrings()
-    {
+    public void seperateMoleculeStrings(){
         String[] parts = reactants.split("\\+");
         
         for(int i = 0; i< parts.length; i++)
@@ -39,57 +37,26 @@ public class ChemicalEquation {
         for(int i = 0; i< parts2.length; i++)
             moleculeStringListProducts.add(parts2[i].trim());
     }
-    
-    public void stringToMolecules()
-    {
+    public void stringToMolecules(){
         for(String mol: moleculeStringListProducts){
             moleculeListProducts.put(new MolecularFormula(mol), new Integer(1));
         }
         for(String mol: moleculeStringListReactants){
             moleculeListReactants.put(new MolecularFormula(mol), new Integer(1));
         }
-    }
-    
+    }  
     public void moleculesToElements(){
         
         elementListProducts.clear();
         elementListReactants.clear();
         
         for(Map.Entry<MolecularFormula, Integer> mol: getProducts().entrySet()){
-            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListProducts);
+            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListProducts, mol.getValue());
         }
         
         for(Map.Entry<MolecularFormula, Integer> mol: getReactants().entrySet()){
-            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListReactants);
+            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListReactants, mol.getValue());
         }
-        /*
-        for(Map.Entry<MolecularFormula, Integer> mol: getProducts().entrySet()){
-            
-            Map<Element, Integer> elementMap = new HashMap<>();
-            mol.getKey().addElement(elementMap);
-            
-            for(Map.Entry<Element, Integer> element: elementMap.entrySet()){
-                if(elementListProducts.containsKey(element.getKey())){
-                    elementListProducts.put(element.getKey(), moleculeListProducts.get(element.getKey()) + 1);
-                }else{
-                    elementListProducts.put(element.getKey(), new Integer(1));
-                }
-            }
-        }
-        
-        Map<Element, Integer> elementMap = new HashMap<>();
-        for(Map.Entry<MolecularFormula, Integer> mol: getReactants().entrySet()){
-           
-            mol.getKey().addElement(elementMap);
-            
-            for(Map.Entry<Element, Integer> element: elementMap.entrySet()){
-                if(elementListReactants.containsKey(element.getKey())){
-                    elementListReactants.put(element.getKey(), moleculeListReactants.get(element.getKey()) + 1);
-                }else{
-                    elementListReactants.put(element.getKey(), new Integer(1));
-                }
-            }
-        }*/
     }
     
     public HashMap<MolecularFormula, Integer> getProducts(){
@@ -97,13 +64,19 @@ public class ChemicalEquation {
     }
     public HashMap<MolecularFormula, Integer> getReactants(){
         return moleculeListReactants;
-    }
-    
+    }   
     public void incrementFromProducts(MolecularFormula key){
         moleculeListProducts.put(key, moleculeListProducts.get(key) + 1);
     }
     public void incrementFromReactants(MolecularFormula key){
         moleculeListReactants.put(key, moleculeListReactants.get(key) + 1);
+    }
+    
+    public void balance(){
+        Map<Element, String> differenceMap = ElementCounter.compareMap(elementListProducts, elementListReactants);
+        while(!differenceMap.isEmpty()){
+            
+        }
     }
     
     public String toString(){
@@ -135,8 +108,7 @@ public class ChemicalEquation {
         
         return returnString;
     }
-    
-/*    public static void main(String[] args){
+    public static void main(String[] args){
         ChemicalEquation chem = new ChemicalEquation("H2O + O2", "H2O");
         
         System.out.println(chem.toString());
@@ -163,5 +135,5 @@ public class ChemicalEquation {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
         
-    }*/
+    }
 }
