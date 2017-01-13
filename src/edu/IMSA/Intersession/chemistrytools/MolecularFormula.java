@@ -115,7 +115,11 @@ public class MolecularFormula {
          MolecularFormula one = new MolecularFormula("C1O2");
          one.MolecularWeight();
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
-         one.addElement(elementM);
+         one.addElement(elementM, 2);
+         for (Map.Entry<Element,Integer> e:elementM.entrySet()){
+             System.out.println("Element: " + e.getKey() + "Value: " + e.getValue());
+         }
+            
      }
      
     public String toString(){
