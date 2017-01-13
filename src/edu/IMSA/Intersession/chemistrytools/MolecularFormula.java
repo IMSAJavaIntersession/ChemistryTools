@@ -143,7 +143,7 @@ public class MolecularFormula {
      {
          MolecularFormula one = new MolecularFormula("CO2");
          one.MolecularWeight();
-         one.ElementCounter("C");
+         one.getElementCount("C");
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
          one.addElement(elementM, 2);
          for (Map.Entry<Element,Integer> e:elementM.entrySet()){
