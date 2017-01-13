@@ -56,15 +56,15 @@ public class MolecularFormula {
         
  }
  
- public void MolecularWeight()
+ public double MolecularWeight()
  {
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
-
          molecularMass+=elements.get(i).getWeight1();
-         System.out.println("Weight" + elements.get(i).getWeight1());
+         System.out.println("Weight: " + elements.get(i).getWeight());
      }
      System.out.println("Molecular Mass is: " + molecularMass);
+     return molecularMass;
  }
  
  public Map<Element,Integer> addElement(Map<Element,Integer> elementMap)
@@ -108,7 +108,7 @@ public class MolecularFormula {
     }
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("H2O2");
+         MolecularFormula one = new MolecularFormula("C1O2");
          one.MolecularWeight();
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
          one.addElement(elementM);
