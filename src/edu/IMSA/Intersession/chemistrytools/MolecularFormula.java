@@ -5,6 +5,8 @@
  */
 package edu.IMSA.Intersession.chemistrytools;
 
+import edu.IMSA.Intersession.Elements.PeriodicTable;
+import edu.IMSA.Intersession.Elements.Element;
 import java.io.FileNotFoundException;
 import java.util.*;
 public class MolecularFormula {

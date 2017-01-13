@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.IMSA.Intersession.chemistrytools;
+package edu.IMSA.Intersession.Elements;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author student
  */
-public class Element {
+final public class Element {
 
     private int atomicNumb;
     private String symbol;
@@ -20,7 +20,7 @@ public class Element {
     private String weight;
     private Scanner scan;
     
-    public Element(String name, int atomicNumb, String symbol, double weight){
+    Element(String name, int atomicNumb, String symbol, double weight){
         this.atomicNumb = atomicNumb;
         this.name = name;
         this.symbol = symbol;
@@ -79,7 +79,7 @@ public class Element {
             System.out.println(elementss[i]);
         }
 */
-    public Element(String line)
+    Element(String line)
     {
         scan = new Scanner(line);
         atomicNumb = scan.nextInt();

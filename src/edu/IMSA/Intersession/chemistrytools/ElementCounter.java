@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.IMSA.Intersession.chemistrytools;
+import edu.IMSA.Intersession.Elements.Element;
 import java.util.*;
 
 /**

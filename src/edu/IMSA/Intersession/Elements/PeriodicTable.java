@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.IMSA.Intersession.chemistrytools;
+package edu.IMSA.Intersession.Elements;
 
+import edu.IMSA.Intersession.Elements.Element;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class PeriodicTable {
     private static Scanner scan;
     int n;
     private static String findMe;
-private static Scanner scan1;
-private static ArrayList<Element> elementList;
+    private static Scanner scan1;
+    private static ArrayList<Element> elementList;
       
 
     private PeriodicTable()
@@ -37,7 +38,7 @@ private static ArrayList<Element> elementList;
         
     }
     
-    public static void populate()
+    private static void populate()
     {
         try {
             scan = new Scanner (new File("pt-data_2.txt"));
