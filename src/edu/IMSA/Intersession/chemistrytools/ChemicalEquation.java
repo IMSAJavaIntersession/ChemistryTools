@@ -11,9 +11,11 @@ public class ChemicalEquation {
     
     ArrayList<String> moleculeStringListProducts = new ArrayList<String>();
     HashMap<MolecularFormula, Integer> moleculeListProducts = new HashMap<>();
+    HashMap<Element, Integer> elementListProducts = new HashMap<>();
     
     ArrayList<String> moleculeStringListReactants = new ArrayList<String>();
     HashMap<MolecularFormula, Integer> moleculeListReactants = new HashMap<>();
+    HashMap<Element, Integer> elementListReactants = new HashMap<>();
     
     public ChemicalEquation(String r, String p)
     {
@@ -47,6 +49,48 @@ public class ChemicalEquation {
         }
     }
     
+    public void moleculesToElements(){
+        
+        elementListProducts.clear();
+        elementListReactants.clear();
+        
+        for(Map.Entry<MolecularFormula, Integer> mol: getProducts().entrySet()){
+            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListProducts);
+        }
+        
+        for(Map.Entry<MolecularFormula, Integer> mol: getReactants().entrySet()){
+            for(int i = 0; i < mol.getValue(); i++)mol.getKey().addElement(elementListReactants);
+        }
+        /*
+        for(Map.Entry<MolecularFormula, Integer> mol: getProducts().entrySet()){
+            
+            Map<Element, Integer> elementMap = new HashMap<>();
+            mol.getKey().addElement(elementMap);
+            
+            for(Map.Entry<Element, Integer> element: elementMap.entrySet()){
+                if(elementListProducts.containsKey(element.getKey())){
+                    elementListProducts.put(element.getKey(), moleculeListProducts.get(element.getKey()) + 1);
+                }else{
+                    elementListProducts.put(element.getKey(), new Integer(1));
+                }
+            }
+        }
+        
+        Map<Element, Integer> elementMap = new HashMap<>();
+        for(Map.Entry<MolecularFormula, Integer> mol: getReactants().entrySet()){
+           
+            mol.getKey().addElement(elementMap);
+            
+            for(Map.Entry<Element, Integer> element: elementMap.entrySet()){
+                if(elementListReactants.containsKey(element.getKey())){
+                    elementListReactants.put(element.getKey(), moleculeListReactants.get(element.getKey()) + 1);
+                }else{
+                    elementListReactants.put(element.getKey(), new Integer(1));
+                }
+            }
+        }*/
+    }
+    
     public HashMap<MolecularFormula, Integer> getProducts(){
         return moleculeListProducts;
     }
@@ -66,7 +110,7 @@ public class ChemicalEquation {
     }
     
     public static void main(String[] args){
-        ChemicalEquation chem = new ChemicalEquation("H2O + O2", "CO2");
+        ChemicalEquation chem = new ChemicalEquation("H2O + O2", "H2O");
         
         System.out.println(chem.toString());
         
@@ -77,7 +121,20 @@ public class ChemicalEquation {
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
         
-        //chem.incrementFromReactants(MolecularFormula(chem.moleculeStringListReactants[i]));
+        //chem.incrementFromProducts();
+        chem.moleculesToElements();
+        
+        System.out.println("----------------");
+        
+        for (Map.Entry<Element, Integer> entry : chem.elementListProducts.entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
+        
+        System.out.println("----------------");
+        
+        for (Map.Entry<Element, Integer> entry : chem.elementListReactants.entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
         
     }
 }
