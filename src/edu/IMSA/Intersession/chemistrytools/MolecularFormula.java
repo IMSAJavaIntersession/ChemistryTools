@@ -109,10 +109,12 @@ public class MolecularFormula {
  public int ElementCounter(String symbol){
     int counter = 0;
     for (int i = 0; i<elements.size(); i++){
-        if (symbol == elements.get(i).getSymbol()){
+        if (symbol.equals(elements.get(i).getSymbol())){
             counter++;
+            System.out.println("hi");
         }
     }
+    System.out.println("Counter: " + counter);
     return counter;
  }
  
@@ -142,12 +144,13 @@ public class MolecularFormula {
      {
          MolecularFormula one = new MolecularFormula("CO2");
          one.MolecularWeight();
+         one.ElementCounter("C");
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
          one.addElement(elementM, 2);
          for (Map.Entry<Element,Integer> e:elementM.entrySet()){
              System.out.println("Element: " + e.getKey() + "Value: " + e.getValue());
          }
-            
+         
      }
      
     public String toString(){
