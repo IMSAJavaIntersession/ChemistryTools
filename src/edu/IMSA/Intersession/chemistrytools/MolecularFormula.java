@@ -15,6 +15,22 @@ public class MolecularFormula {
  public MolecularFormula(String formula)
  {
      this.formula = formula;
+     
+    for (Element element: elements)
+    {
+        if(element==null)
+        {
+         System.out.println("Please enter a valid molecular formula.");
+        }
+        else
+        {
+            System.out.println(element);
+        }
+    } 
+ }
+ public boolean createObject()
+ {
+     boolean done=false;
      for (int i =0; i<formula.length(); i++)
      {       
         if (i<formula.length()-1 && Character.isLetter(formula.charAt(i)) && Character.isLetter(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i))&& Character.isUpperCase(formula.charAt(i+1)))
@@ -24,18 +40,22 @@ public class MolecularFormula {
             System.out.println(a);
             elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i+1))));
             i=i+1;
+            done=true;
         }
         else if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)) && Character.isLowerCase(formula.charAt(i+1)))
         {
             elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
+            done=true;
         }
         else if(i>0 && Character.isLetter(formula.charAt(i))&& Character.isDigit(formula.charAt(i-1)))
         {
           elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
+          done=true;
         }
         else if(i==0 & Character.isLetter(formula.charAt(i)))
         {
             elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
+            done=true;
         }
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)) && Character.isLowerCase(formula.charAt(i-1)))
         {
@@ -45,6 +65,7 @@ public class MolecularFormula {
                 elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i-2))+Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
+            done=true;
         }
                         
         else if(i>1&&Character.isDigit(formula.charAt(i))&& Character.isLetter(formula.charAt(i-2)) && Character.isUpperCase(formula.charAt(i-1)))
@@ -56,6 +77,7 @@ public class MolecularFormula {
                 elements.add(e);
                 addElement--;
             }
+            done=true;
         }
         else if (Character.isDigit(formula.charAt(i)))
         {
@@ -65,17 +87,11 @@ public class MolecularFormula {
                 elements.add(PeriodicTable.getElement(Character.toString(formula.charAt(i-1))));
                 addElement--;
             }
+            done=true;
         }
     }
-     
-    for (Element element: elements)
-    {
-        System.out.println(element);
-    }     
-     
-        
+   return done;  
  }
- 
  public double MolecularWeight()
  {
      double molecularMass = 0;
@@ -104,6 +120,19 @@ public class MolecularFormula {
      }
      }
      return elementMap;
+ }
+ 
+ public boolean containsELement(Element e)
+ {
+     boolean contains=false;
+     for(int i=0; i<elements.size();i++)
+     {
+         if(elements.get(i).equals(e))
+         {
+             contains=true;
+         }
+     }
+     return contains;
  }
  
  public int getElementCount(String symbol){
@@ -141,7 +170,7 @@ public class MolecularFormula {
     }
      public static void main (String[] args)
      {
-         MolecularFormula one = new MolecularFormula("CO2");
+         MolecularFormula one = new MolecularFormula("A");
          one.MolecularWeight();
          one.getElementCount("C");
          Map <Element, Integer> elementM = new HashMap<Element,Integer>();
