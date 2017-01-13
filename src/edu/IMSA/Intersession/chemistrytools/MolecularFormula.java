@@ -106,6 +106,16 @@ public class MolecularFormula {
      return elementMap;
  }
  
+ public int ElementCounter(String symbol){
+    int counter = 0;
+    for (int i = 0; i<elements.size(); i++){
+        if (symbol == elements.get(i).getSymbol()){
+            counter++;
+        }
+    }
+    return counter;
+ }
+ 
  public boolean equals(Object O) 
  {
      MolecularFormula mC=(MolecularFormula) O;
