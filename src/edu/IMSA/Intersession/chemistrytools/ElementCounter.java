@@ -12,9 +12,10 @@ import java.util.*;
  * @author student
  */
 public class ElementCounter {
-
+            int[] ratios= new int[2];
     public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> m2){
         Map <Element,String> returnMap = new HashMap<>();
+
         for (Map.Entry<Element,Integer> e:m1.entrySet())
         {
             int val1=0;
@@ -37,14 +38,16 @@ public class ElementCounter {
                   return returnMap;
     }
 
-    public static String balanceOneElement(String ratio)
+    public static ArrayList<Integer> balanceOneElement(ArrayList<Integer> a)
     {
        int val1=0;
        int val2=0;
        int greater=0;
        int lcm;
-        val1=Character.getNumericValue(ratio.charAt(0));
-        val2=Character.getNumericValue(ratio.charAt(2));
+        val1=a.get(0);
+        System.out.println(val1 + "val1");
+        val2=a.get(1);
+        System.out.println(val2 + "val2");
         if (val1>=val2)
         {
             greater=val1;
@@ -53,6 +56,7 @@ public class ElementCounter {
         {
             greater=val2;
         }
+        System.out.println(greater + "greater");
         for (int i=greater; i<=val1*val2;i++)
         {
              double va1=val1;
@@ -67,20 +71,19 @@ public class ElementCounter {
                      break;
              }
         }
-        
-        return Integer.toString(val1)+":" + Integer.toString(val2);
+        ArrayList<Integer> ratios = new ArrayList<Integer>();
+        ratios.add(val1);
+        ratios.add(val2);
+        return ratios;
     }
 
     
      public static void main(String[] args) 
      {
-           Map <Element,Integer> m1=new HashMap<>();
-           Map <Element,Integer> m2=new HashMap<>();
-           MolecularFormula.of("H2").addElement(m1, 1);
-           MolecularFormula.of("O2").addElement(m1,1);
-           MolecularFormula.of("H2O").addElement(m2,2);
-           ElementCounter.compareMap(m1,m2);
-           System.out.println(balanceOneElement("6:8"));
+           ArrayList<Integer> a = new ArrayList<Integer>();
+           a.add(6);
+           a.add(10);
+           System.out.println(balanceOneElement(a));
       
       
      }

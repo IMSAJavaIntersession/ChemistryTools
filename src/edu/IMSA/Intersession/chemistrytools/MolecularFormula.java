@@ -88,7 +88,9 @@ public class MolecularFormula {
           }
           }
           MolecularFormula m=new MolecularFormula(formula,e);
+                    System.out.println(e);
                     return m;
+                    
 
  }
  public double MolecularWeight()
@@ -169,7 +171,8 @@ public class MolecularFormula {
     }
      public static void main (String[] args)
      {
-         of("CO2");
+         Map<Element,Integer> m1 = new HashMap<>();
+         System.out.println(of("H5O7C6").addElement(m1, 1));
 
          
      }
