@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 public class ChemistryTools implements ActionListener {
 	JButton data;
+	JTextField extraData;
     JButton submit;
     JFrame frame;
     JPanel panel;
@@ -31,7 +32,8 @@ public class ChemistryTools implements ActionListener {
         window.setup();
     }
     public void setup(){
-    	data = new JButton("Print extra data!")
+    	data = new JButton("Print extra data!");
+    	extraData = new JTextField(40);
         submit = new JButton("Submit!");
         reactants = new JTextField(40);
         products = new JTextField(40);
@@ -47,6 +49,7 @@ public class ChemistryTools implements ActionListener {
         p.setFont(new Font("Verdana",1,15));
         a.setFont(new Font("Verdana", 1, 25));
         label1.setFont(new Font("Verdana",1,30));
+        data.addActionListener(this);
         panel.add(label1);
         panel.add(r);
         panel.add(reactants);
@@ -56,6 +59,7 @@ public class ChemistryTools implements ActionListener {
         panel.add(submit);
         panel.add(a);
         panel.add(textans);
+        panel.add(extraData);
         panel.add(data);
         Dimension d = new Dimension(500, 550);
         frame.setPreferredSize(d);
@@ -83,7 +87,7 @@ public class ChemistryTools implements ActionListener {
         }
         
         if(e.getSource() == data) {
-     	
+        	extraData.setText("The button has been pushed!");
         }
     }
     public String returnreact(){
