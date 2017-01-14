@@ -94,16 +94,20 @@ public class ChemicalEquation {
                 Element el = entry.getKey();
                 ArrayList<Integer> ratio = ElementCounter.balanceOneElement(entry.getValue());
                 
-                MolecularFormula reactantMol = findMolHoldingEl(el, moleculeListReactants);
-                MolecularFormula productMol = findMolHoldingEl(el, moleculeListProducts);
-                
+                ArrayList<MolecularFormula> rmList = findMolHoldingEl2(el, moleculeListReactants);
+                ArrayList<MolecularFormula> pmList = findMolHoldingEl2(el, moleculeListProducts);
+
                 int reactantRatio = ratio.get(0);
                 int productRatio = ratio.get(1);
                 
                 System.out.println(ratio + " _ " + reactantRatio + ":" + productRatio);
                 
-                moleculeListReactants.put(reactantMol, moleculeListReactants.get(reactantMol) * reactantRatio);
-                moleculeListProducts.put(productMol, moleculeListProducts.get(productMol) * productRatio);
+                for(MolecularFormula rm: rmList){
+                    moleculeListReactants.put(rm, moleculeListReactants.get(rm) * reactantRatio);
+                }
+                for(MolecularFormula pm: pmList){
+                    moleculeListReactants.put(pm, moleculeListReactants.get(pm) * productRatio);
+                }
                 
                 break;
             }
@@ -118,7 +122,8 @@ public class ChemicalEquation {
         }
         return null;
     }
-        public ArrayList <MolecularFormula> findMolHoldingEl2(Element el, Map<MolecularFormula, Integer> map){
+    
+    public ArrayList <MolecularFormula> findMolHoldingEl2(Element el, Map<MolecularFormula, Integer> map){
         ArrayList<MolecularFormula> m = new ArrayList <MolecularFormula>();
         Element e;
         for(Map.Entry<MolecularFormula, Integer> molecule: map.entrySet()){
