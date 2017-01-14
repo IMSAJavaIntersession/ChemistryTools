@@ -99,6 +99,11 @@ public class ChemistryTools implements ActionListener {
             
             ce.balance();
             extraData.setText(ce.getSteps());
+            MolecularFormula formula = new MolecularFormula(reactantsString);
+            MolecularFormula formula2 = new MolecularFormula(productsString);
+            double totalWeight = formula.MolecularWeight() + formula2.MolecularWeight();
+            extraData.append("/n");
+            extraData.append("The molecular weight is--> " + totalWeight);
         }
     }
     public String returnreact(){
