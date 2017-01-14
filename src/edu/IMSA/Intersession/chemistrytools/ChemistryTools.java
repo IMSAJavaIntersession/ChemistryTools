@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class ChemistryTools implements ActionListener {
 	JButton data;
-	JTextField extraData;
+	JTextArea extraData;
     JButton submit;
     JFrame frame;
     JPanel panel;
@@ -17,6 +17,7 @@ public class ChemistryTools implements ActionListener {
     JTextField reactants;
     JTextField products;
     JScrollPane ans;
+    JScrollPane ans2;
     JTextArea textans;
     JLabel r;
     JLabel p;
@@ -33,7 +34,8 @@ public class ChemistryTools implements ActionListener {
     }
     public void setup(){
     	data = new JButton("Print extra data!");
-    	extraData = new JTextField(40);
+    	extraData = new JTextArea(5,40);
+    	ans2 = new JScrollPane(extraData);
         submit = new JButton("Submit!");
         reactants = new JTextField(40);
         products = new JTextField(40);
@@ -59,9 +61,9 @@ public class ChemistryTools implements ActionListener {
         panel.add(submit);
         panel.add(a);
         panel.add(textans);
-        panel.add(extraData);
+        panel.add(ans2);
         panel.add(data);
-        Dimension d = new Dimension(500, 550);
+        Dimension d = new Dimension(500, 650);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
         frame.setVisible(true);
@@ -83,11 +85,20 @@ public class ChemistryTools implements ActionListener {
             strans = ce.toString();
             textans.setText(strans);
             
-            System.out.println(ce.getSteps());
+            //System.out.println(ce.getSteps());
         }
         
         if(e.getSource() == data) {
-        	extraData.setText("The button has been pushed!");
+        	reactantsString = reactants.getText();
+            productsString = products.getText();
+            try {
+                ce = new ChemicalEquation(reactantsString,productsString);
+            } catch (Exception ex) {
+                Logger.getLogger(ChemistryTools.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            ce.balance();
+            extraData.setText(ce.getSteps());
         }
     }
     public String returnreact(){
