@@ -83,23 +83,22 @@ public class ChemicalEquation {
     public void balance(){
         for(int i = 0; i < 100; i++){
             moleculesToElements();
-            Map<Element, String> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
+            Map<Element, ArrayList<Integer>> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
             if(differenceMap.isEmpty())break;
             
-            for (Map.Entry<Element, String> entry : differenceMap.entrySet()){
+            for (Map.Entry<Element, ArrayList<Integer>> entry : differenceMap.entrySet()){
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
             
-            for (Map.Entry<Element, String> entry : differenceMap.entrySet()){
+            for (Map.Entry<Element, ArrayList<Integer>> entry : differenceMap.entrySet()){
                 Element el = entry.getKey();
-                String ratio = ElementCounter.balanceOneElement(entry.getValue());
+                ArrayList<Integer> ratio = ElementCounter.balanceOneElement(entry.getValue());
                 
                 MolecularFormula reactantMol = findMolHoldingEl(el, moleculeListReactants);
                 MolecularFormula productMol = findMolHoldingEl(el, moleculeListProducts);
                 
-                String[] parts = ratio.split(":");
-                int reactantRatio = Integer.valueOf(parts[0]);
-                int productRatio = Integer.valueOf(parts[1]);
+                int reactantRatio = ratio.get(0);
+                int productRatio = ratio.get(1);
                 
                 System.out.println(ratio + " _ " + reactantRatio + ":" + productRatio);
                 
