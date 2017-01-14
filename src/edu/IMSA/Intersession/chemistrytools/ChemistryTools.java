@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.IMSA.Intersession.chemistrytools;
+import edu.IMSA.Intersession.Elements;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author student
- */
+
 public class ChemistryTools implements ActionListener {
+	JButton data;
     JButton submit;
     JFrame frame;
     JPanel panel;
@@ -30,14 +24,14 @@ public class ChemistryTools implements ActionListener {
     String productsString;
     ChemicalEquation ce;
     String strans;
-    //boolean done;
-    //boolean done = false;
+
     public static void main(String[] args){
     	
         ChemistryTools window = new ChemistryTools();
         window.setup();
     }
     public void setup(){
+    	data = new JButton("Print extra data!")
         submit = new JButton("Submit!");
         reactants = new JTextField(40);
         products = new JTextField(40);
@@ -62,7 +56,8 @@ public class ChemistryTools implements ActionListener {
         panel.add(submit);
         panel.add(a);
         panel.add(textans);
-        Dimension d = new Dimension(500, 500);
+        panel.add(data);
+        Dimension d = new Dimension(500, 550);
         frame.setPreferredSize(d);
         frame.getContentPane().add(panel);
         frame.setVisible(true);
@@ -85,8 +80,10 @@ public class ChemistryTools implements ActionListener {
             textans.setText(strans);
             
             System.out.println(ce.getSteps());
-            
-            //done=true;
+        }
+        
+        if(e.getSource() == data) {
+     	
         }
     }
     public String returnreact(){
