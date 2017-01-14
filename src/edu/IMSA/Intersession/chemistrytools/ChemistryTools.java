@@ -1,5 +1,5 @@
 package edu.IMSA.Intersession.chemistrytools;
-import edu.IMSA.Intersession.Elements;
+import edu.IMSA.Intersession.Elements.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
