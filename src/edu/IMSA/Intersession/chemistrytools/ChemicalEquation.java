@@ -120,12 +120,11 @@ public class ChemicalEquation {
     }
         public ArrayList <MolecularFormula> findMolHoldingEl2(Element el, Map<MolecularFormula, Integer> map){
         ArrayList<MolecularFormula> m = new ArrayList <MolecularFormula>();
-        int count;
         Element e;
         for(Map.Entry<MolecularFormula, Integer> molecule: map.entrySet()){
             if(molecule.getKey().containsElement(el))
             {
-                    
+                  m.add(molecule.getKey());  
             }
         }
         return m;
@@ -133,7 +132,21 @@ public class ChemicalEquation {
     
     public Element count(Map <Element, ArrayList <Integer>> m1)
     {
-        return null;
+        int count=1000000000;
+        Element e1=null;
+        for (Map.Entry<Element,ArrayList<Integer>> e: m1.entrySet())
+        {
+            ArrayList <MolecularFormula> a = findMolHoldingEl2(e.getKey(),moleculeListReactants);
+            ArrayList <MolecularFormula> b = findMolHoldingEl2(e.getKey(),moleculeListProducts);
+            if (a.size()+b.size()<count)
+            {
+                count=a.size()+b.size();
+                e1=e.getKey();
+               
+            }
+            
+        }
+        return e1;
     }
     public String getSteps(){
         String returnString = "";
