@@ -104,7 +104,7 @@ public class MolecularFormula {
           }
           }
           MolecularFormula m=new MolecularFormula(formula,e);
-                    System.out.println(e);
+           //         System.out.println(e);
                     return m;
                     
 
@@ -114,9 +114,9 @@ public class MolecularFormula {
      double molecularMass = 0;
      for (int i = 0; i<elements.size(); i++){
          molecularMass+=elements.get(i).getWeight1();
-         System.out.println("Weight: " + elements.get(i).getWeight());
+   //      System.out.println("Weight: " + elements.get(i).getWeight());
      }
-     System.out.println("Molecular Mass is: " + molecularMass);
+  //   System.out.println("Molecular Mass is: " + molecularMass);
      return molecularMass;
  }
  
