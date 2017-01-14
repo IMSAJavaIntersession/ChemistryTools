@@ -23,8 +23,23 @@ public class MolecularFormula {
      ArrayList<Element> e = new ArrayList<Element>();
      boolean done=false;
      for (int i =0; i<formula.length(); i++)
-     {       
-        if (i<formula.length()-1 && Character.isLetter(formula.charAt(i)) && Character.isLetter(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i))&& Character.isUpperCase(formula.charAt(i+1)))
+     {  
+        if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)) && Character.isLowerCase(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i+2)))
+        {
+            e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
+            e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i+2))));
+            done=true;
+        }
+        else if (i<formula.length()-1 && Character.isLetter(formula.charAt(i)) && Character.isLetter(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i))&& Character.isUpperCase(formula.charAt(i+1)) && Character.isLowerCase(formula.charAt(i+2)))
+        {
+            e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
+            Element a=PeriodicTable.getElement(Character.toString(formula.charAt(i+1)) + Character.toString(formula.charAt(i+2)));
+            e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i+1)) + Character.toString(formula.charAt(i+2))));
+            i=i+1;
+            done=true;
+        }
+        
+        else if (i<formula.length()-1 && Character.isLetter(formula.charAt(i)) && Character.isLetter(formula.charAt(i+1)) && Character.isUpperCase(formula.charAt(i))&& Character.isUpperCase(formula.charAt(i+1)))
         {
             e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))));
             Element a=PeriodicTable.getElement(Character.toString(formula.charAt(i+1)));
@@ -32,6 +47,7 @@ public class MolecularFormula {
             i=i+1;
             done=true;
         }
+        
         else if(i<formula.length()-1&& Character.isLetter(formula.charAt(i+1)) && Character.isLetter(formula.charAt(i)) && Character.isLowerCase(formula.charAt(i+1)))
         {
             e.add(PeriodicTable.getElement(Character.toString(formula.charAt(i))+ Character.toString(formula.charAt(i+1))));
@@ -172,17 +188,14 @@ public class MolecularFormula {
      public static void main (String[] args)
      {
          Map<Element,Integer> m1 = new HashMap<>();
-         System.out.println(of("H5O7C6").addElement(m1, 1));
+         System.out.println(of("CaCl2").addElement(m1, 1));
 
-         
      }
      
     public String toString(){
         return formula;
         
     }
-     
-     
  }
 
 
