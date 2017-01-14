@@ -13,8 +13,8 @@ import java.util.*;
  */
 public class ElementCounter {
             int[] ratios= new int[2];
-    public static Map<Element,String> compareMap(Map<Element, Integer> m1, Map<Element, Integer> m2){
-        Map <Element,String> returnMap = new HashMap<>();
+    public static Map<Element,ArrayList<Integer>> compareMap(Map<Element, Integer> m1, Map<Element, Integer> m2){
+        Map <Element,ArrayList<Integer>> returnMap = new HashMap<>();
 
         for (Map.Entry<Element,Integer> e:m1.entrySet())
         {
@@ -27,8 +27,10 @@ public class ElementCounter {
             }
             if (val1!=val2)
             {
-                String Val = Integer.toString(val1) + ":" + Integer.toString(val2);
-                returnMap.put(e.getKey(), Val);
+                ArrayList <Integer> Val = new ArrayList <Integer>();
+                Val.add(val1);
+                Val.add(val2);
+                returnMap.put(e.getKey(),Val);
             }
         }
 
