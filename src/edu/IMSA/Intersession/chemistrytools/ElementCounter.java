@@ -82,10 +82,16 @@ public class ElementCounter {
     
      public static void main(String[] args) 
      {
-           ArrayList<Integer> a = new ArrayList<Integer>();
-           a.add(6);
-           a.add(10);
-           System.out.println(balanceOneElement(a));
+           Map <Element, Integer> m1 = new HashMap<>();
+           Map <Element, Integer> m2 = new HashMap<>();
+           MolecularFormula.of("H2").addElement(m1, 1);
+           MolecularFormula.of("O2").addElement(m1, 1);
+           MolecularFormula.of("H2O").addElement(m2, 1);
+           compareMap(m1,m2);
+           //ArrayList<Integer> a = new ArrayList<Integer>();
+           //a.add(6);
+           //a.add(10);
+           //System.out.println(balanceOneElement(a));
       
       
      }
