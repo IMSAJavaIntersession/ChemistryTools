@@ -118,6 +118,23 @@ public class ChemicalEquation {
         }
         return null;
     }
+        public ArrayList <MolecularFormula> findMolHoldingEl2(Element el, Map<MolecularFormula, Integer> map){
+        ArrayList<MolecularFormula> m = new ArrayList <MolecularFormula>();
+        int count;
+        Element e;
+        for(Map.Entry<MolecularFormula, Integer> molecule: map.entrySet()){
+            if(molecule.getKey().containsElement(el))
+            {
+                    
+            }
+        }
+        return m;
+    }
+    
+    public Element count(Map <Element, ArrayList <Integer>> m1)
+    {
+        return null;
+    }
     public String getSteps(){
         String returnString = "";
         
