@@ -91,7 +91,7 @@ public class ChemicalEquation {
             }
             
             for (Map.Entry<Element, ArrayList<Integer>> entry : differenceMap.entrySet()){
-                Element el = entry.getKey();
+                Element el = count(differenceMap);
                 ArrayList<Integer> ratio = ElementCounter.balanceOneElement(entry.getValue());
                 
                 ArrayList<MolecularFormula> rmList = findMolHoldingEl2(el, moleculeListReactants);
