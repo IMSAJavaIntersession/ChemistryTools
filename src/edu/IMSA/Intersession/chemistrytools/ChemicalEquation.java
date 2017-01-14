@@ -77,10 +77,11 @@ public class ChemicalEquation {
         moleculeListProducts.put(key, moleculeListProducts.get(key) + 1);
     }
     public void incrementFromReactants(MolecularFormula key){
-        moleculeListReactants.put(key, moleculeListReactants.get(key) + 1);
+            moleculeListReactants.put(key, moleculeListReactants.get(key) + 1);
     }
     
     public void balance(){
+        
         for(int i = 0; i < 100; i++){
             moleculesToElements();
             Map<Element, ArrayList<Integer>> differenceMap = ElementCounter.compareMap(elementListReactants, elementListProducts);
@@ -89,27 +90,36 @@ public class ChemicalEquation {
             for (Map.Entry<Element, ArrayList<Integer>> entry : differenceMap.entrySet()){
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
-            
-            for (Map.Entry<Element, ArrayList<Integer>> entry : differenceMap.entrySet()){
-                Element el = count(differenceMap);
-                ArrayList<Integer> ratio = ElementCounter.balanceOneElement(entry.getValue());
-                
-                ArrayList<MolecularFormula> rmList = findMolHoldingEl2(el, moleculeListReactants);
-                ArrayList<MolecularFormula> pmList = findMolHoldingEl2(el, moleculeListProducts);
 
-                int reactantRatio = ratio.get(0);
-                int productRatio = ratio.get(1);
-                
-                System.out.println(ratio + " _ " + reactantRatio + ":" + productRatio);
-                
-                for(MolecularFormula rm: rmList){
-                    moleculeListReactants.put(rm, moleculeListReactants.get(rm) * reactantRatio);
-                }
-                for(MolecularFormula pm: pmList){
-                    moleculeListReactants.put(pm, moleculeListReactants.get(pm) * productRatio);
-                }
-                
-                break;
+            Element el = count(differenceMap);
+            
+            if(el==null)System.out.println("ELEMENT IS NULL");
+            else System.out.println("ELEMENTASDFASZDFASDFASZDF:" + el);
+            
+            ArrayList<Integer> ratio = ElementCounter.balanceOneElement(differenceMap.get(el));
+            
+            System.out.println("RATIO:" + ratio);
+
+            ArrayList<MolecularFormula> rmList = findMolHoldingEl2(el, moleculeListReactants);
+            ArrayList<MolecularFormula> pmList = findMolHoldingEl2(el, moleculeListProducts);
+            
+            System.out.println("rmList:" + rmList.size());
+            System.out.println(pmList.size());
+            
+            if(pmList.isEmpty()) System.out.println("List is empty");
+
+            int reactantRatio = ratio.get(0);
+            int productRatio = ratio.get(1);
+
+            System.out.println(ratio + " _ " + reactantRatio + ":" + productRatio);
+
+            for(MolecularFormula rm: rmList){
+                System.out.println(rm);
+                moleculeListReactants.put(rm, moleculeListReactants.get(rm) * reactantRatio);
+            }
+            for(MolecularFormula pm: pmList){
+                System.out.println(pm);
+                moleculeListProducts.put(pm, moleculeListProducts.get(pm) * productRatio);
             }
             
             System.out.println(toString());
@@ -194,7 +204,7 @@ public class ChemicalEquation {
         return returnString;
     }
     public static void main(String[] args){
-        ChemicalEquation chem = new ChemicalEquation("H2 + O2", "H2O");
+        ChemicalEquation chem = new ChemicalEquation("NH3 + CuO", "Cu + N2 + H2O");
         
         System.out.println(chem.toString());
         
