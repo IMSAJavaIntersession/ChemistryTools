@@ -79,8 +79,12 @@ public class ChemistryTools implements ActionListener {
             } catch (Exception ex) {
                 Logger.getLogger(ChemistryTools.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            ce.balance();
             strans = ce.toString();
             textans.setText(strans);
+            
+            System.out.println(ce.getSteps());
             
             //done=true;
         }

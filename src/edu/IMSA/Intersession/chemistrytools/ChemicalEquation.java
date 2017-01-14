@@ -101,12 +101,15 @@ public class ChemicalEquation {
                 int reactantRatio = Integer.valueOf(parts[0]);
                 int productRatio = Integer.valueOf(parts[1]);
                 
+                System.out.println(ratio + " _ " + reactantRatio + ":" + productRatio);
+                
                 moleculeListReactants.put(reactantMol, moleculeListReactants.get(reactantMol) * reactantRatio);
                 moleculeListProducts.put(productMol, moleculeListProducts.get(productMol) * productRatio);
                 
                 break;
             }
             
+            System.out.println(toString());
             stepsList.add(toString() + "\n");
         }
     }
